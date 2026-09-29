@@ -120,3 +120,7 @@ That's it — the site will be live in under a minute.
 | Navigation + scroll progress | `components/Nav` |
 
 The scene-cut fallback is shown automatically whenever `useFull3D` is `false` — reduced-motion users, mobile/low-power devices, and browsers without WebGL all get a smooth, accessible experience without the 3D overhead.
+
+## Credits
+
+- 3D hero model: **"Simple computer"** by **Robert Schlyter** — licensed **CC BY 3.0**, via [poly.pizza](https://poly.pizza/m/doMMnviJrGi). File: `public/models/retro-computer.glb`.
