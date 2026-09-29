@@ -6,6 +6,7 @@ import { Terminal } from "./Terminal";
 import { ScrollCamera } from "./ScrollCamera";
 import { GalleryPanels } from "./zones/GalleryPanels";
 import { Constellation } from "./zones/Constellation";
+import { TimelineTrack } from "./zones/TimelineTrack";
 
 export function SceneCanvas({ children }: { children?: React.ReactNode }) {
   const [active, setActive] = useState(true);
@@ -26,6 +27,7 @@ export function SceneCanvas({ children }: { children?: React.ReactNode }) {
         <Terminal />
         <GalleryPanels />
         <Constellation />
+        <TimelineTrack />
         <ScrollCamera />
         {children}
       </Canvas>
