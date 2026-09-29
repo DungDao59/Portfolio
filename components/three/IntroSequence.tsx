@@ -6,7 +6,7 @@ import { introState } from "@/lib/introState";
 
 const COUNT = 1400;
 const START_Z = 34; // camera starts deep in space
-const END_Z = 6; // hero framing — matches journey.ts hero cameraPos.z
+const END_Z = 3.1; // hero framing — matches journey.ts hero cameraPos.z
 
 // smootherstep for cinematic easing
 const smooth = (t: number) => t * t * t * (t * (t * 6 - 15) + 10);
@@ -28,9 +28,9 @@ export function IntroSequence() {
       scattered[i * 3] = r * Math.sin(ph) * Math.cos(th);
       scattered[i * 3 + 1] = r * Math.sin(ph) * Math.sin(th);
       scattered[i * 3 + 2] = r * Math.cos(ph);
-      // target: spread across the terminal face (~3.4 x 2.2, thin depth)
-      targets[i * 3] = (Math.random() - 0.5) * 3.4;
-      targets[i * 3 + 1] = (Math.random() - 0.5) * 2.2;
+      // target: spread across the terminal face (~4.6 x 2.6, thin depth)
+      targets[i * 3] = (Math.random() - 0.5) * 4.6;
+      targets[i * 3 + 1] = (Math.random() - 0.5) * 2.6;
       targets[i * 3 + 2] = (Math.random() - 0.5) * 0.3;
     }
     return { positions: scattered.slice(), scattered, targets };

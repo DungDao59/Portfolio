@@ -57,17 +57,17 @@ export function Terminal({ position = [0, 0, 0] as [number, number, number] }) {
 
   return (
     <group ref={group} position={position}>
-      {/* glowing frame */}
-      <RoundedBox args={[3.4, 2.2, 0.2]} radius={0.08} smoothness={4}>
+      {/* glowing frame — wide, screen-like aspect so it fills the hero */}
+      <RoundedBox args={[4.6, 2.6, 0.2]} radius={0.1} smoothness={4}>
         <meshStandardMaterial ref={mat} color="#141420" emissive="#7c5cff" emissiveIntensity={0.05} />
       </RoundedBox>
       {/* dark face */}
       <mesh position={[0, 0, 0.11]}>
-        <planeGeometry args={[3.1, 1.9]} />
+        <planeGeometry args={[4.2, 2.3]} />
         <meshBasicMaterial color="#0b0b12" />
       </mesh>
       {/* typed code lines */}
-      <group position={[-1.35, 0.6, 0.12]}>
+      <group position={[-1.9, 0.9, 0.12]}>
         {lines.map((line, i) => {
           const isLast = i === lines.length - 1;
           const text = line + (isLast && typing && cursorOn ? "_" : "");
@@ -75,8 +75,8 @@ export function Terminal({ position = [0, 0, 0] as [number, number, number] }) {
           return (
             <Text
               key={i}
-              position={[0, -i * 0.32, 0]}
-              fontSize={0.16}
+              position={[0, -i * 0.34, 0]}
+              fontSize={0.18}
               anchorX="left"
               anchorY="middle"
               color={accent ? "#7c5cff" : "#c9c9d6"}

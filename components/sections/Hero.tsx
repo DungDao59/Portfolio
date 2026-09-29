@@ -22,10 +22,19 @@ export function Hero({ immediate = false }: { immediate?: boolean }) {
   return (
     <Section id="hero">
       <div
-        className={`text-center transition-opacity duration-700 ${
+        className={`relative text-center transition-opacity duration-700 ${
           show ? "opacity-100" : "opacity-0"
         }`}
       >
+        {/* readability scrim so text stays legible over the glowing terminal */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[150%] w-[150%] -translate-x-1/2 -translate-y-1/2"
+          style={{
+            background:
+              "radial-gradient(ellipse at center, rgba(10,10,11,0.7) 0%, rgba(10,10,11,0.4) 42%, transparent 70%)",
+          }}
+        />
         <Reveal>
           <p className="mb-4 text-sm uppercase tracking-[0.3em] text-accent">{content.title}</p>
         </Reveal>
