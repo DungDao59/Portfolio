@@ -12,6 +12,7 @@ export default {
         fg: "var(--fg)",
         muted: "var(--muted)",
         accent: "var(--accent)",
+        "accent-soft": "var(--accent-soft)",
       },
     },
   },

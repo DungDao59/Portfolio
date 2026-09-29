@@ -1,6 +1,6 @@
 "use client";
 import { Canvas } from "@react-three/fiber";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { World } from "./World";
 import { Terminal } from "./Terminal";
 import { ScrollCamera } from "./ScrollCamera";
@@ -23,13 +23,15 @@ export function SceneCanvas({ children }: { children?: React.ReactNode }) {
         camera={{ position: [0, 0, 6], fov: 55 }}
         gl={{ antialias: true }}
       >
-        <World />
-        <Terminal />
-        <GalleryPanels />
-        <Constellation />
-        <TimelineTrack />
-        <ScrollCamera />
-        {children}
+        <Suspense fallback={null}>
+          <World />
+          <Terminal />
+          <GalleryPanels />
+          <Constellation />
+          <TimelineTrack />
+          <ScrollCamera />
+          {children}
+        </Suspense>
       </Canvas>
     </div>
   );

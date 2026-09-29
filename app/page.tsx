@@ -1,8 +1,13 @@
 "use client";
+import dynamic from "next/dynamic";
 import { useCapability } from "@/providers/Capability";
 import { SceneCut } from "@/components/fallback/SceneCut";
-import { SceneCanvas } from "@/components/three/SceneCanvas";
 import { Preloader } from "@/components/intro/Preloader";
+
+const SceneCanvas = dynamic(
+  () => import("@/components/three/SceneCanvas").then((m) => m.SceneCanvas),
+  { ssr: false }
+);
 import { Nav } from "@/components/ui/Nav";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { Hero } from "@/components/sections/Hero";
