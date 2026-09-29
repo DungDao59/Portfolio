@@ -5,8 +5,10 @@ export type Zone = { id: SectionId; cameraPos: Vec3; lookAt: Vec3 };
 
 // A path that flies forward (−z) and gently weaves x/y between zones.
 const RAW: Record<SectionId, { cameraPos: Vec3; lookAt: Vec3 }> = {
-  hero:       { cameraPos: [0, 0, 3.1],   lookAt: [0, 0, 0] },
-  about:      { cameraPos: [3, 1, -8],    lookAt: [2, 0, -12] },
+  // Hero: camera offset left so the terminal (at world origin) sits on the right.
+  hero:       { cameraPos: [-1.4, 0, 3.6], lookAt: [-1.4, 0, 0] },
+  // About: path from hero passes through the terminal at z=0 (fly-through-screen).
+  about:      { cameraPos: [3.1, 0, -8],   lookAt: [1.5, 0, -12] },
   projects:   { cameraPos: [-4, 0, -22],  lookAt: [-2, 0, -28] },
   tech:       { cameraPos: [2, 2, -40],   lookAt: [0, 1, -46] },
   experience: { cameraPos: [-2, -1, -58], lookAt: [0, 0, -66] },

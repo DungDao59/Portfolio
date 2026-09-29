@@ -3,10 +3,10 @@ import { useMemo, useRef } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 import { introState } from "@/lib/introState";
+import { cameraAt } from "@/lib/journey";
 
 const COUNT = 1400;
-const START_Z = 34; // camera starts deep in space
-const END_Z = 3.1; // hero framing — matches journey.ts hero cameraPos.z
+const DEPTH = 31; // how far behind the hero framing the fly-in starts
 
 // smootherstep for cinematic easing
 const smooth = (t: number) => t * t * t * (t * (t * 6 - 15) + 10);
@@ -28,9 +28,9 @@ export function IntroSequence() {
       scattered[i * 3] = r * Math.sin(ph) * Math.cos(th);
       scattered[i * 3 + 1] = r * Math.sin(ph) * Math.sin(th);
       scattered[i * 3 + 2] = r * Math.cos(ph);
-      // target: spread across the terminal face (~4.6 x 2.6, thin depth)
-      targets[i * 3] = (Math.random() - 0.5) * 4.6;
-      targets[i * 3 + 1] = (Math.random() - 0.5) * 2.6;
+      // target: spread across the terminal face (~3.8 x 2.4, thin depth)
+      targets[i * 3] = (Math.random() - 0.5) * 3.8;
+      targets[i * 3 + 1] = (Math.random() - 0.5) * 2.4;
       targets[i * 3 + 2] = (Math.random() - 0.5) * 0.3;
     }
     return { positions: scattered.slice(), scattered, targets };
@@ -42,8 +42,13 @@ export function IntroSequence() {
 
     if (active) {
       const e = smooth(p);
-      camera.position.set(0, 0, START_Z + (END_Z - START_Z) * e);
-      camera.lookAt(0, 0, 0);
+      const hero = cameraAt(0); // the split-hero framing (camera offset left)
+      camera.position.set(
+        hero.pos[0],
+        hero.pos[1],
+        hero.pos[2] + DEPTH * (1 - e),
+      );
+      camera.lookAt(hero.lookAt[0], hero.lookAt[1], hero.lookAt[2]);
     }
 
     const pts = pointsRef.current;
