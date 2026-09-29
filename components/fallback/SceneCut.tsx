@@ -1,10 +1,5 @@
 "use client";
-import { useCapability } from "@/providers/Capability";
-import { SceneCut } from "@/components/fallback/SceneCut";
-import { SceneCanvas } from "@/components/three/SceneCanvas";
-import { Preloader } from "@/components/intro/Preloader";
 import { Nav } from "@/components/ui/Nav";
-import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
 import { Projects } from "@/components/sections/Projects";
@@ -13,20 +8,16 @@ import { Experience } from "@/components/sections/Experience";
 import { Education } from "@/components/sections/Education";
 import { Contact } from "@/components/sections/Contact";
 
-export default function Page() {
-  const { useFull3D } = useCapability();
-  if (!useFull3D) {
-    return (<><Preloader /><SceneCut /></>);
-  }
+export function SceneCut() {
   return (
-    <>
-      <Preloader />
-      <SceneCanvas />
-      <ScrollProgress />
+    <div
+      className="relative min-h-screen"
+      style={{ background: "radial-gradient(circle at 50% -10%, rgba(124,92,255,0.15), #0a0a0b 60%)" }}
+    >
       <Nav />
       <main className="relative z-10">
         <Hero /><About /><Projects /><TechStack /><Experience /><Education /><Contact />
       </main>
-    </>
+    </div>
   );
 }
