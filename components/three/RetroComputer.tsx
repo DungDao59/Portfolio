@@ -7,10 +7,10 @@ import * as THREE from "three";
 const MODEL = "/models/retro-computer.glb";
 
 // --- tuning knobs (adjust after viewing in the browser) ---
-const TARGET_HEIGHT = 4.4; // world-space height of the whole model
-const SCREEN_Y = 0.235; // model-space Y of the CRT screen center (aligns screen to world origin)
+const TARGET_HEIGHT = 3.6; // world-space height of the whole model
+const SCREEN_Y = 0.258; // model-space Y of the CRT screen center (aligns screen to world origin)
 const ROT_Y = Math.PI; // computer faces the camera
-const OFFSET: [number, number, number] = [-0.06, 0, 0]; // world nudge to center the screen on the text
+const OFFSET: [number, number, number] = [-0.25, 0, 0]; // world nudge to center the screen on the text
 // ----------------------------------------------------------
 
 // Loads the real retro-computer GLB and positions it so the CRT screen sits at the
