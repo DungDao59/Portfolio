@@ -9,7 +9,7 @@ const MODEL = "/models/retro-computer.glb";
 // --- tuning knobs (adjust after viewing in the browser) ---
 const TARGET_HEIGHT = 3.4; // world-space height of the whole model
 const SCREEN_Y = 0.28; // model-space Y of the CRT screen center (aligns screen to world origin)
-const ROT_Y = 0; // set to Math.PI if the computer faces away from the camera
+const ROT_Y = Math.PI; // computer faces the camera
 // ----------------------------------------------------------
 
 // Loads the real retro-computer GLB and positions it so the CRT screen sits at the
