@@ -6,6 +6,33 @@
 html, body { background: var(--bg); color: var(--fg); }
 body { -webkit-font-smoothing: antialiased; overflow-x: hidden; font-family: var(--font-body, ui-sans-serif, system-ui, sans-serif); }
 
+/* animated gradient shimmer name — each letter carries the gradient with a
+   staggered delay so the shimmer sweeps across the word as a wave */
+.name-letter {
+  display: inline-block;
+  background-image: linear-gradient(90deg, #ededed 0%, #7c5cff 50%, #ededed 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: name-shimmer 3s linear infinite;
+  transition: transform 0.2s ease;
+  will-change: background-position, transform;
+}
+.name-letter:hover {
+  transform: translateY(-0.1em) scale(1.08);
+}
+@keyframes name-shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .name-letter {
+    animation: none;
+  }
+}
+
 /* subtle film grain overlay */
 .grain::after {
   content: "";

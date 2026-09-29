@@ -16,7 +16,7 @@ export function SceneCut() {
     >
       <Nav />
       <main className="relative z-10">
-        <Hero /><About /><Projects /><TechStack /><Experience /><Education /><Contact />
+        <Hero immediate /><About /><Projects /><TechStack /><Experience /><Education /><Contact />
       </main>
     </div>
   );

@@ -25,6 +25,19 @@ export const content = {
   initials: "YN",
   title: "PLACEHOLDER: Software Engineer",
   tagline: "PLACEHOLDER: I build immersive, performant web experiences.",
+  roles: [
+    "PLACEHOLDER: web apps",
+    "PLACEHOLDER: 3D experiences",
+    "PLACEHOLDER: developer tools",
+  ],
+  codeLines: [
+    "const dev = {",
+    "  name: 'PLACEHOLDER',",
+    "  role: 'engineer',",
+    "  stack: ['ts','react','r3f'],",
+    "  ship: () => true,",
+    "};",
+  ],
   about:
     "PLACEHOLDER: Two or three sentences about who you are, how you work, and what you care about as a developer.",
   photo: undefined as string | undefined,

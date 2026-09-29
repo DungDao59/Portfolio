@@ -4,6 +4,7 @@ import { Suspense, useEffect, useState } from "react";
 import { World } from "./World";
 import { Terminal } from "./Terminal";
 import { ScrollCamera } from "./ScrollCamera";
+import { IntroSequence } from "./IntroSequence";
 import { GalleryPanels } from "./zones/GalleryPanels";
 import { Constellation } from "./zones/Constellation";
 import { TimelineTrack } from "./zones/TimelineTrack";
@@ -26,6 +27,7 @@ export function SceneCanvas({ children }: { children?: React.ReactNode }) {
         <Suspense fallback={null}>
           <World />
           <Terminal />
+          <IntroSequence />
           <GalleryPanels />
           <Constellation />
           <TimelineTrack />
