@@ -3,6 +3,7 @@ import { Canvas } from "@react-three/fiber";
 import { useEffect, useState } from "react";
 import { World } from "./World";
 import { Terminal } from "./Terminal";
+import { ScrollCamera } from "./ScrollCamera";
 
 export function SceneCanvas({ children }: { children?: React.ReactNode }) {
   const [active, setActive] = useState(true);
@@ -21,6 +22,7 @@ export function SceneCanvas({ children }: { children?: React.ReactNode }) {
       >
         <World />
         <Terminal />
+        <ScrollCamera />
         {children}
       </Canvas>
     </div>
