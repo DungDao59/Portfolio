@@ -24,7 +24,10 @@ export function Preloader() {
       introState.finish();
       return;
     }
-    if (sessionStorage.getItem("intro-seen")) {
+    if (
+      sessionStorage.getItem("intro-seen") ||
+      new URLSearchParams(window.location.search).has("nointro")
+    ) {
       introState.finish();
       return;
     }

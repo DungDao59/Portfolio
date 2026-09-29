@@ -8,8 +8,8 @@ const MODEL = "/models/retro-computer.glb";
 
 // --- tuning knobs (adjust after viewing in the browser) ---
 const TARGET_HEIGHT = 3.6; // world-space height of the whole model
-const SCREEN_Y = 0.258; // model-space Y of the CRT screen center (aligns screen to world origin)
-const ROT_Y = Math.PI; // computer faces the camera
+const SCREEN_Y = 0.246; // model-space Y of the CRT screen center (aligns screen to world origin)
+const ROT_Y = Math.PI - 0.32; // computer faces the camera
 const OFFSET: [number, number, number] = [-0.25, 0, 0]; // world nudge to center the screen on the text
 // ----------------------------------------------------------
 
