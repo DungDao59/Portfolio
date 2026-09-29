@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { World } from "./World";
 import { Terminal } from "./Terminal";
 import { ScrollCamera } from "./ScrollCamera";
+import { GalleryPanels } from "./zones/GalleryPanels";
 
 export function SceneCanvas({ children }: { children?: React.ReactNode }) {
   const [active, setActive] = useState(true);
@@ -22,6 +23,7 @@ export function SceneCanvas({ children }: { children?: React.ReactNode }) {
       >
         <World />
         <Terminal />
+        <GalleryPanels />
         <ScrollCamera />
         {children}
       </Canvas>
