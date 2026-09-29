@@ -8,10 +8,12 @@ import { TechStack } from "@/components/sections/TechStack";
 import { Experience } from "@/components/sections/Experience";
 import { Education } from "@/components/sections/Education";
 import { Contact } from "@/components/sections/Contact";
+import { Preloader } from "@/components/intro/Preloader";
 
 export default function Page() {
   return (
     <>
+      <Preloader />
       <SceneCanvas />
       <ScrollProgress />
       <Nav />
