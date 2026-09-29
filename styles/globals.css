@@ -33,6 +33,11 @@ body { -webkit-font-smoothing: antialiased; overflow-x: hidden; font-family: var
   }
 }
 
+/* retro CRT hero text glow */
+.hero-crt {
+  text-shadow: 0 0 10px rgba(124, 92, 255, 0.45);
+}
+
 /* subtle film grain overlay */
 .grain::after {
   content: "";

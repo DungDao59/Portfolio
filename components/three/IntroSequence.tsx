@@ -28,10 +28,10 @@ export function IntroSequence() {
       scattered[i * 3] = r * Math.sin(ph) * Math.cos(th);
       scattered[i * 3 + 1] = r * Math.sin(ph) * Math.sin(th);
       scattered[i * 3 + 2] = r * Math.cos(ph);
-      // target: spread across the terminal face (~3.8 x 2.4, thin depth)
-      targets[i * 3] = (Math.random() - 0.5) * 3.8;
-      targets[i * 3 + 1] = (Math.random() - 0.5) * 2.4;
-      targets[i * 3 + 2] = (Math.random() - 0.5) * 0.3;
+      // target: spread across the CRT screen (~2.2 x 1.6, thin depth)
+      targets[i * 3] = (Math.random() - 0.5) * 2.2;
+      targets[i * 3 + 1] = (Math.random() - 0.5) * 1.6;
+      targets[i * 3 + 2] = (Math.random() - 0.5) * 0.25;
     }
     return { positions: scattered.slice(), scattered, targets };
   }, []);

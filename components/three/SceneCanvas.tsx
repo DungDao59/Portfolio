@@ -2,7 +2,7 @@
 import { Canvas } from "@react-three/fiber";
 import { Suspense, useEffect, useState } from "react";
 import { World } from "./World";
-import { Terminal } from "./Terminal";
+import { RetroComputer } from "./RetroComputer";
 import { ScrollCamera } from "./ScrollCamera";
 import { IntroSequence } from "./IntroSequence";
 import { GalleryPanels } from "./zones/GalleryPanels";
@@ -26,7 +26,7 @@ export function SceneCanvas({ children }: { children?: React.ReactNode }) {
       >
         <Suspense fallback={null}>
           <World />
-          <Terminal />
+          <RetroComputer />
           <IntroSequence />
           <GalleryPanels />
           <Constellation />
