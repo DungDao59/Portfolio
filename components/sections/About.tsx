@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { content } from "@/lib/content";
 import { Section } from "@/components/ui/Section";
 import { Reveal } from "@/components/ui/Reveal";
@@ -7,7 +8,20 @@ export function About() {
     <Section id="about">
       <div className="grid items-center gap-10 md:grid-cols-2">
         <Reveal>
-          <div className="aspect-square w-full rounded-[var(--radius)] bg-accent-soft ring-1 ring-accent/30" />
+          <div className="relative mx-auto aspect-square w-full max-w-sm overflow-hidden rounded-[var(--radius)] ring-1 ring-accent/30">
+            {content.photo ? (
+              <Image
+                src={content.photo}
+                alt={content.name}
+                fill
+                sizes="(max-width: 768px) 100vw, 384px"
+                className="object-cover"
+                priority
+              />
+            ) : (
+              <div className="h-full w-full bg-accent-soft" />
+            )}
+          </div>
         </Reveal>
         <Reveal delay={0.1}>
           <div>
