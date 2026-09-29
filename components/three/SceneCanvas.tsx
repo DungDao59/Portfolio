@@ -2,6 +2,7 @@
 import { Canvas } from "@react-three/fiber";
 import { useEffect, useState } from "react";
 import { World } from "./World";
+import { Terminal } from "./Terminal";
 
 export function SceneCanvas({ children }: { children?: React.ReactNode }) {
   const [active, setActive] = useState(true);
@@ -19,6 +20,7 @@ export function SceneCanvas({ children }: { children?: React.ReactNode }) {
         gl={{ antialias: true }}
       >
         <World />
+        <Terminal />
         {children}
       </Canvas>
     </div>
