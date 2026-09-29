@@ -6,7 +6,7 @@ export function Projects() {
   return (
     <Section id="projects">
       <div className="w-full">
-        <Reveal><h2 className="mb-10 text-4xl font-bold">Projects</h2></Reveal>
+        <Reveal><h2 className="font-display mb-10 text-4xl font-bold">Projects</h2></Reveal>
         <div className="grid gap-8 md:grid-cols-3">
           {content.projects.map((p, i) => (
             <Reveal key={p.id} delay={i * 0.1}>

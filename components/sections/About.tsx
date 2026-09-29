@@ -11,7 +11,7 @@ export function About() {
         </Reveal>
         <Reveal delay={0.1}>
           <div>
-            <h2 className="mb-6 text-4xl font-bold">About</h2>
+            <h2 className="font-display mb-6 text-4xl font-bold">About</h2>
             <p className="text-lg leading-relaxed text-muted">{content.about}</p>
           </div>
         </Reveal>

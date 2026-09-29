@@ -7,12 +7,12 @@ export function Contact() {
     <Section id="contact">
       <div className="text-center">
         <Reveal>
-          <h2 className="text-5xl font-bold md:text-7xl">Let's build something.</h2>
+          <h2 className="font-display text-5xl font-bold md:text-7xl">Let's build something.</h2>
         </Reveal>
         <Reveal delay={0.1}>
           <a
             href={`mailto:${content.email}`}
-            className="mt-8 inline-block rounded-full bg-accent px-8 py-4 font-semibold text-black transition-transform hover:scale-105"
+            className="mt-8 inline-block rounded-full bg-accent px-8 py-4 font-semibold text-white transition-transform hover:scale-105"
           >
             {content.email}
           </a>

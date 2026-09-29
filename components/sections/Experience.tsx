@@ -6,7 +6,7 @@ export function Experience() {
   return (
     <Section id="experience">
       <div className="w-full">
-        <Reveal><h2 className="mb-10 text-4xl font-bold">Experience</h2></Reveal>
+        <Reveal><h2 className="font-display mb-10 text-4xl font-bold">Experience</h2></Reveal>
         <div className="relative border-l border-accent/30 pl-8">
           {content.experience.map((e, i) => (
             <Reveal key={e.id} delay={i * 0.1}>

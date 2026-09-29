@@ -12,7 +12,7 @@ export function Hero() {
           </p>
         </Reveal>
         <Reveal delay={0.1}>
-          <h1 className="text-6xl font-bold md:text-8xl">{content.name}</h1>
+          <h1 className="font-display text-6xl font-bold md:text-8xl">{content.name}</h1>
         </Reveal>
         <Reveal delay={0.2}>
           <p className="mx-auto mt-6 max-w-xl text-lg text-muted">{content.tagline}</p>

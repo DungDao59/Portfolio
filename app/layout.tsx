@@ -3,6 +3,7 @@ import { Space_Grotesk, Inter } from "next/font/google";
 import "@/styles/globals.css";
 import { CapabilityProvider } from "@/providers/Capability";
 import { SmoothScroll } from "@/providers/SmoothScroll";
+import { MotionProvider } from "@/providers/Motion";
 import { content } from "@/lib/content";
 
 const spaceGrotesk = Space_Grotesk({
@@ -37,7 +38,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable}`}>
       <body className="grain">
         <CapabilityProvider>
-          <SmoothScroll>{children}</SmoothScroll>
+          <MotionProvider>
+            <SmoothScroll>{children}</SmoothScroll>
+          </MotionProvider>
         </CapabilityProvider>
       </body>
     </html>

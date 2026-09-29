@@ -6,7 +6,7 @@ export function TechStack() {
   return (
     <Section id="tech">
       <div className="w-full text-center">
-        <Reveal><h2 className="mb-10 text-4xl font-bold">Tech Stack</h2></Reveal>
+        <Reveal><h2 className="font-display mb-10 text-4xl font-bold">Tech Stack</h2></Reveal>
         <div className="flex flex-wrap justify-center gap-3">
           {content.techStack.map((t, i) => (
             <Reveal key={t} delay={i * 0.05}>

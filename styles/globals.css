@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 html, body { background: var(--bg); color: var(--fg); }
-body { -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+body { -webkit-font-smoothing: antialiased; overflow-x: hidden; font-family: var(--font-body, ui-sans-serif, system-ui, sans-serif); }
 
 /* subtle film grain overlay */
 .grain::after {

@@ -11,8 +11,12 @@ export default {
         bg: "var(--bg)",
         fg: "var(--fg)",
         muted: "var(--muted)",
-        accent: "var(--accent)",
+        accent: "rgb(var(--accent) / <alpha-value>)",
         "accent-soft": "var(--accent-soft)",
+      },
+      fontFamily: {
+        sans: ["var(--font-body)", "ui-sans-serif", "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "ui-sans-serif", "sans-serif"],
       },
     },
   },

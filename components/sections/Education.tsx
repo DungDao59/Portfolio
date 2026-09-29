@@ -6,7 +6,7 @@ export function Education() {
   return (
     <Section id="education">
       <div className="w-full">
-        <Reveal><h2 className="mb-10 text-4xl font-bold">Education</h2></Reveal>
+        <Reveal><h2 className="font-display mb-10 text-4xl font-bold">Education</h2></Reveal>
         <div className="grid gap-6 md:grid-cols-2">
           {content.education.map((e, i) => (
             <Reveal key={e.id} delay={i * 0.1}>
