@@ -23,12 +23,12 @@ function useNebulaTexture() {
 }
 
 const CLOUDS: { pos: [number, number, number]; scale: number; color: string; opacity: number }[] = [
-  { pos: [0, 0, -16], scale: 20, color: "#7c5cff", opacity: 0.1 }, // faint halo behind the monitor
-  { pos: [-15, 7, -30], scale: 32, color: "#7c5cff", opacity: 0.14 },
-  { pos: [17, -8, -38], scale: 40, color: "#4f6bff", opacity: 0.12 },
-  { pos: [-10, -10, -50], scale: 38, color: "#c05cff", opacity: 0.1 },
-  { pos: [20, 10, -58], scale: 46, color: "#5a3cff", opacity: 0.11 },
-  { pos: [0, 2, -74], scale: 62, color: "#3a2f7a", opacity: 0.12 },
+  { pos: [0, 0, -16], scale: 20, color: "#7c5cff", opacity: 0.18 }, // halo behind the monitor
+  { pos: [-15, 7, -30], scale: 32, color: "#7c5cff", opacity: 0.32 },
+  { pos: [17, -8, -38], scale: 40, color: "#4f6bff", opacity: 0.28 },
+  { pos: [-10, -10, -50], scale: 38, color: "#c05cff", opacity: 0.24 },
+  { pos: [20, 10, -58], scale: 46, color: "#5a3cff", opacity: 0.26 },
+  { pos: [0, 2, -74], scale: 62, color: "#3a2f7a", opacity: 0.26 },
 ];
 
 export function World() {
@@ -45,8 +45,8 @@ export function World() {
     <group>
       {/* layered starfield for depth */}
       <group ref={stars}>
-        <Stars radius={140} depth={90} count={6000} factor={4} fade speed={0.3} />
-        <Stars radius={70} depth={40} count={1800} factor={6} fade speed={0.6} />
+        <Stars radius={140} depth={90} count={9000} factor={5} fade speed={0.3} />
+        <Stars radius={70} depth={40} count={2600} factor={7} fade speed={0.6} />
       </group>
 
       {/* drifting nebula clouds */}
