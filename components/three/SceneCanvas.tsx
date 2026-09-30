@@ -3,6 +3,7 @@ import { Canvas } from "@react-three/fiber";
 import { Suspense, useEffect, useState } from "react";
 import { World } from "./World";
 import { RetroComputer } from "./RetroComputer";
+import { SceneBackground } from "./SceneBackground";
 import { ScrollCamera } from "./ScrollCamera";
 import { GalleryPanels } from "./zones/GalleryPanels";
 import { Constellation } from "./zones/Constellation";
@@ -24,6 +25,7 @@ export function SceneCanvas({ children }: { children?: React.ReactNode }) {
         gl={{ antialias: true }}
       >
         <Suspense fallback={null}>
+          <SceneBackground />
           <World />
           <RetroComputer />
           <GalleryPanels />
