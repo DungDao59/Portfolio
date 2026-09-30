@@ -125,7 +125,7 @@ export function Preloader() {
               />
             </div>
             <div className="mt-4 font-mono text-sm tracking-[0.5em] text-[#d8ccff]">
-              {String(pct).padStart(3, "0")}%
+              {pct}%
             </div>
             <div className="mt-2 font-mono text-[0.7rem] uppercase tracking-[0.4em] text-muted/70">
               Loading world
