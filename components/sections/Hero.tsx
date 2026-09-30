@@ -59,8 +59,8 @@ export function Hero({ immediate = false }: { immediate?: boolean }) {
           <p className="mb-4 text-sm font-semibold uppercase tracking-[0.4em] text-[#c8b8ff]">
             {content.title}
           </p>
-          <h1 className="hero-name whitespace-nowrap text-4xl font-extrabold leading-[1.05] sm:text-5xl md:text-6xl">
-            {content.name}
+          <h1 className="hero-name whitespace-nowrap text-5xl font-extrabold leading-[1.05] sm:text-6xl md:text-7xl">
+            {content.heroName}
           </h1>
           <div className="mt-5 text-lg font-medium text-[#d8ccff] sm:text-xl">
             <RotatingText prefix="> I build " items={content.roles} />

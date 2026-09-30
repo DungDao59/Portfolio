@@ -22,6 +22,7 @@ export type SectionId = (typeof SECTIONS)[number];
 
 export const content = {
   name: "Dao Tien Dung",
+  heroName: "Dung Dao",
   initials: "DTD",
   title: "Full-Stack Developer",
   tagline: "I build software that solves real problems.",
