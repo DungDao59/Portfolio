@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { SECTIONS } from "@/lib/content";
 import { zoneIndexAt } from "@/lib/journey";
 import { scrollProgress } from "@/components/three/ScrollCamera";
@@ -20,12 +21,10 @@ function toLabel(id: string): string {
 }
 
 export function Nav() {
-  const [shrink, setShrink] = useState(false);
   const [active, setActive] = useState(0);
   useEffect(() => {
     let raf = 0;
     const loop = () => {
-      setShrink(window.scrollY > 40);
       setActive(zoneIndexAt(scrollProgress));
       raf = requestAnimationFrame(loop);
     };
@@ -41,23 +40,36 @@ export function Nav() {
   }
 
   return (
-    <nav
-      className={`fixed left-0 top-0 z-40 flex w-full items-center justify-center gap-6 transition-all ${
-        shrink ? "py-3 backdrop-blur-md" : "py-6"
-      }`}
-    >
-      {SECTIONS.map((id, i) => (
-        <a
-          key={id}
-          href={`#${id}`}
-          onClick={(e) => handleNavClick(e, id)}
-          className={`text-sm uppercase tracking-widest transition-colors ${
-            active === i ? "text-accent" : "text-muted hover:text-fg"
-          }`}
-        >
-          {toLabel(id)}
-        </a>
-      ))}
+    <nav className="fixed left-1/2 top-4 z-40 -translate-x-1/2">
+      <div className="flex max-w-[95vw] items-center gap-1 overflow-x-auto rounded-full border border-white/10 bg-white/[0.06] px-2 py-1.5 shadow-[0_8px_30px_rgba(0,0,0,0.35)] backdrop-blur-md">
+        {SECTIONS.map((id, i) => {
+          const isActive = active === i;
+          return (
+            <a
+              key={id}
+              href={`#${id}`}
+              onClick={(e) => handleNavClick(e, id)}
+              className="relative shrink-0 rounded-full px-4 py-1.5"
+            >
+              {isActive && (
+                <motion.span
+                  layoutId="nav-active"
+                  className="absolute inset-0 rounded-full bg-accent/25 ring-1 ring-accent/60"
+                  style={{ boxShadow: "0 0 16px rgba(124,92,255,0.45)" }}
+                  transition={{ type: "spring", stiffness: 420, damping: 34 }}
+                />
+              )}
+              <span
+                className={`relative z-10 text-xs uppercase tracking-widest transition-colors ${
+                  isActive ? "font-semibold text-white" : "text-muted hover:text-fg"
+                }`}
+              >
+                {toLabel(id)}
+              </span>
+            </a>
+          );
+        })}
+      </div>
     </nav>
   );
 }
