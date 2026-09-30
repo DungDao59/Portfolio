@@ -26,6 +26,7 @@ export const content = {
   initials: "DTD",
   title: "Full-Stack Developer",
   tagline: "I build software that solves real problems.",
+  status: "Available for internship",
   headline:
     "Turning complex challenges into clean, reliable web applications — from database to interface.",
   roles: [

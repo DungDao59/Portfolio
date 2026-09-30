@@ -27,7 +27,10 @@ export function RetroComputer() {
       const mat = mesh.material as THREE.MeshStandardMaterial;
       if (!mat || !("name" in mat)) return;
       if (mat.name === "metalDark") {
-        mat.color.set("#0a0a0f"); // screen → theme background
+        // screen → deep indigo-violet with a soft "powered-on" glow (matches theme)
+        mat.color.set("#1b1836");
+        mat.emissive.set("#2a2350");
+        mat.emissiveIntensity = 0.35;
       } else if (mat.name === "metal") {
         mat.color.set("#2a2a33"); // bezel/body → dark neutral
         mat.metalness = 0.6;
