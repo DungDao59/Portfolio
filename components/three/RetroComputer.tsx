@@ -27,10 +27,10 @@ export function RetroComputer() {
       const mat = mesh.material as THREE.MeshStandardMaterial;
       if (!mat || !("name" in mat)) return;
       if (mat.name === "metal") {
-        // display surface → deep indigo-violet with a soft "powered-on" glow
-        mat.color.set("#1b1836");
-        mat.emissive.set("#2a2350");
-        mat.emissiveIntensity = 0.35;
+        // display surface → dark neutral; violet lighting gives it depth (the "old" look)
+        mat.color.set("#2a2a33");
+        mat.emissive.set("#000000");
+        mat.emissiveIntensity = 0;
       } else if (mat.name === "metalDark") {
         // exterior casing → light grey plastic
         mat.color.set("#c2c2cc");
