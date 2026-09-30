@@ -44,29 +44,33 @@ export function Hero({ immediate = false }: { immediate?: boolean }) {
     }
   };
 
-  const btn =
-    "w-56 rounded border border-accent/60 px-4 py-2 text-sm text-fg transition-colors hover:bg-accent hover:text-white";
+  const btnPrimary =
+    "rounded-md bg-accent px-7 py-3 text-sm font-bold uppercase tracking-wide text-white shadow-[0_0_24px_rgba(124,92,255,0.55)] transition hover:brightness-110";
+  const btnSecondary =
+    "rounded-md border-2 border-[#b9a6ff] px-7 py-3 text-sm font-bold uppercase tracking-wide text-[#e9e2ff] transition hover:bg-[#b9a6ff]/15";
 
   return (
     <Section id="hero">
       <div
         className={`transition-opacity duration-500 ${visible ? "opacity-100" : "opacity-0"}`}
       >
-        {/* content styled to sit on the CRT screen */}
-        <div className="hero-crt mx-auto w-full max-w-[26rem] text-center font-mono">
-          <p className="mb-3 text-xs uppercase tracking-[0.3em] text-accent">{content.title}</p>
-          <h1 className="text-2xl font-bold leading-tight text-fg sm:text-3xl md:text-4xl">
+        {/* content styled to sit on the CRT screen — the highlight of the hero */}
+        <div className="hero-crt mx-auto w-full max-w-[40rem] text-center font-mono">
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.4em] text-[#c8b8ff]">
+            {content.title}
+          </p>
+          <h1 className="hero-name whitespace-nowrap text-4xl font-extrabold leading-[1.05] sm:text-5xl md:text-6xl">
             {content.name}
           </h1>
-          <div className="mt-3 text-sm text-accent">
+          <div className="mt-5 text-lg font-medium text-[#d8ccff] sm:text-xl">
             <RotatingText prefix="> I build " items={content.roles} />
           </div>
-          <div className="mt-6 flex flex-col items-center gap-3">
-            <a href={content.cv} download className={btn}>
-              [ Download CV ]
+          <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
+            <a href={content.cv} download className={btnPrimary}>
+              Download CV
             </a>
-            <a href="#contact" onClick={goContact} className={btn}>
-              [ Contact Info ]
+            <a href="#contact" onClick={goContact} className={btnSecondary}>
+              Contact Info
             </a>
           </div>
         </div>

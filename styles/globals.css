@@ -35,7 +35,27 @@ body { -webkit-font-smoothing: antialiased; overflow-x: hidden; font-family: var
 
 /* retro CRT hero text glow */
 .hero-crt {
-  text-shadow: 0 0 10px rgba(124, 92, 255, 0.45);
+  text-shadow: 0 0 12px rgba(124, 92, 255, 0.5);
+}
+/* big glowing gradient name — the focal point of the screen */
+.hero-name {
+  background-image: linear-gradient(180deg, #ffffff 0%, #d8ccff 55%, #9d86ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 16px rgba(124, 92, 255, 0.65));
+  letter-spacing: 0.02em;
+}
+@keyframes crt-flicker {
+  0%, 97%, 100% { opacity: 1; }
+  98% { opacity: 0.82; }
+  99% { opacity: 0.94; }
+}
+.hero-crt {
+  animation: crt-flicker 6s infinite steps(1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-crt { animation: none; }
 }
 
 /* subtle film grain overlay */
