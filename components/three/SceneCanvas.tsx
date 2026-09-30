@@ -4,7 +4,6 @@ import { Suspense, useEffect, useState } from "react";
 import { World } from "./World";
 import { RetroComputer } from "./RetroComputer";
 import { ScrollCamera } from "./ScrollCamera";
-import { IntroSequence } from "./IntroSequence";
 import { GalleryPanels } from "./zones/GalleryPanels";
 import { Constellation } from "./zones/Constellation";
 import { TimelineTrack } from "./zones/TimelineTrack";
@@ -21,13 +20,12 @@ export function SceneCanvas({ children }: { children?: React.ReactNode }) {
       <Canvas
         dpr={[1, 2]}
         frameloop={active ? "always" : "never"}
-        camera={{ position: [0, 0, 6], fov: 55 }}
+        camera={{ position: [0, 0, 3.8], fov: 55 }}
         gl={{ antialias: true }}
       >
         <Suspense fallback={null}>
           <World />
           <RetroComputer />
-          <IntroSequence />
           <GalleryPanels />
           <Constellation />
           <TimelineTrack />
