@@ -49,7 +49,7 @@ export function Nav() {
               key={id}
               href={`#${id}`}
               onClick={(e) => handleNavClick(e, id)}
-              className="relative shrink-0 rounded-full px-4 py-1.5"
+              className="group relative shrink-0 rounded-full px-4 py-1.5 transition-colors hover:bg-white/10"
             >
               {isActive && (
                 <motion.span
@@ -61,7 +61,7 @@ export function Nav() {
               )}
               <span
                 className={`relative z-10 text-xs uppercase tracking-widest transition-colors ${
-                  isActive ? "font-semibold text-white" : "text-muted hover:text-fg"
+                  isActive ? "font-semibold text-white" : "text-muted group-hover:text-white"
                 }`}
               >
                 {toLabel(id)}
