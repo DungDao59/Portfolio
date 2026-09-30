@@ -3,6 +3,7 @@ import { Stars } from "@react-three/drei";
 import { useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
+import { scrollProgress } from "./ScrollCamera";
 
 // A soft radial "blob" texture reused for the nebula clouds.
 function useNebulaTexture() {
@@ -22,14 +23,15 @@ function useNebulaTexture() {
   }, []);
 }
 
+// Fewer clouds → a darker, cleaner base. They stay rich in the hero and fade as
+// you dive into the "computer world".
 const CLOUDS: { pos: [number, number, number]; scale: number; color: string; opacity: number }[] = [
-  { pos: [0, 0, -16], scale: 20, color: "#7c5cff", opacity: 0.18 }, // halo behind the monitor
-  { pos: [-15, 7, -30], scale: 32, color: "#7c5cff", opacity: 0.32 },
-  { pos: [17, -8, -38], scale: 40, color: "#4f6bff", opacity: 0.28 },
-  { pos: [-10, -10, -50], scale: 38, color: "#c05cff", opacity: 0.24 },
-  { pos: [20, 10, -58], scale: 46, color: "#5a3cff", opacity: 0.26 },
-  { pos: [0, 2, -74], scale: 62, color: "#3a2f7a", opacity: 0.26 },
+  { pos: [-15, 7, -30], scale: 32, color: "#7c5cff", opacity: 0.3 },
+  { pos: [17, -8, -40], scale: 42, color: "#4f6bff", opacity: 0.24 },
+  { pos: [-10, -10, -56], scale: 40, color: "#c05cff", opacity: 0.2 },
 ];
+
+const SEGMENT = 1 / 6; // hero -> about dive
 
 export function World() {
   const tex = useNebulaTexture();
@@ -37,8 +39,17 @@ export function World() {
   const stars = useRef<THREE.Group>(null);
 
   useFrame((_, dt) => {
-    if (clouds.current) clouds.current.rotation.z += dt * 0.008;
     if (stars.current) stars.current.rotation.y += dt * 0.005;
+    if (clouds.current) {
+      clouds.current.rotation.z += dt * 0.008;
+      // fade clouds out as we dive in, so the computer world is darker & cleaner
+      const fade = 1 - Math.min(1, scrollProgress / SEGMENT) * 0.85;
+      for (const child of clouds.current.children) {
+        const mesh = child as THREE.Mesh;
+        const mat = mesh.material as THREE.MeshBasicMaterial;
+        mat.opacity = (mesh.userData.base as number) * fade;
+      }
+    }
   });
 
   return (
@@ -49,10 +60,10 @@ export function World() {
         <Stars radius={70} depth={40} count={2600} factor={7} fade speed={0.6} />
       </group>
 
-      {/* drifting nebula clouds */}
+      {/* drifting nebula clouds (fade on dive) */}
       <group ref={clouds}>
         {CLOUDS.map((c, i) => (
-          <mesh key={i} position={c.pos} scale={c.scale}>
+          <mesh key={i} position={c.pos} scale={c.scale} userData={{ base: c.opacity }}>
             <planeGeometry args={[1, 1]} />
             <meshBasicMaterial
               map={tex}
