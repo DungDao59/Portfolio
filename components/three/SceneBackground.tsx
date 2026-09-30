@@ -12,14 +12,15 @@ const COSMOS = new THREE.Color("#0a0a0b");
 // not the raw #2a2a33 material. Tuned to the screen's darker edges.
 const SCREEN = new THREE.Color("#060516");
 
-// The dive happens across the first journey segment (hero -> about) = 1/6 of scroll.
-const SEGMENT = 1 / 6;
+// Blend fast — finish before reaching the About zone so the world is fully "inside
+// the screen" by then (matches the WorldGrid fade).
+const BLEND_END = 0.1;
 
 export function SceneBackground() {
   const { scene } = useThree();
   const col = useMemo(() => new THREE.Color(), []);
   useFrame(() => {
-    const t = Math.min(1, Math.max(0, scrollProgress / SEGMENT));
+    const t = Math.min(1, Math.max(0, scrollProgress / BLEND_END));
     col.copy(COSMOS).lerp(SCREEN, t);
     scene.background = col;
   });

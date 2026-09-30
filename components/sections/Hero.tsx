@@ -55,8 +55,13 @@ export function Hero({ immediate = false }: { immediate?: boolean }) {
         className={`transition-opacity duration-500 ${visible ? "opacity-100" : "opacity-0"}`}
       >
         {/* content styled to sit on the CRT screen — the highlight of the hero */}
-        <div className="hero-crt mx-auto w-full max-w-[40rem] text-center font-mono">
-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.4em] text-[#c8b8ff]">
+        <div className="hero-crt relative mx-auto w-full max-w-[40rem] text-center font-mono">
+          {/* subtle tech-grid decoration on the display (matches the world grid) */}
+          <div
+            aria-hidden="true"
+            className="tech-grid hero-grid pointer-events-none absolute -inset-x-16 -inset-y-12"
+          />
+          <p className="relative mb-4 text-sm font-semibold uppercase tracking-[0.4em] text-[#c8b8ff]">
             {content.title}
           </p>
           <h1 className="hero-name whitespace-nowrap text-5xl font-extrabold leading-[1.05] sm:text-6xl md:text-7xl">

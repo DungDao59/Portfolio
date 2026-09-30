@@ -66,6 +66,19 @@ body { -webkit-font-smoothing: antialiased; overflow-x: hidden; font-family: var
   .blink { animation: none; }
 }
 
+/* shared tech grid — used on the hero display and the "inside the screen" world */
+.tech-grid {
+  background-image:
+    linear-gradient(rgba(124, 92, 255, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124, 92, 255, 0.09) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+/* grid decoration confined to the hero display, softly masked at the edges */
+.hero-grid {
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 55%, transparent 78%);
+  mask-image: radial-gradient(ellipse at center, #000 55%, transparent 78%);
+}
+
 /* subtle film grain overlay */
 .grain::after {
   content: "";
