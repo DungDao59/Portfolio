@@ -23,12 +23,12 @@ function useNebulaTexture() {
 }
 
 const CLOUDS: { pos: [number, number, number]; scale: number; color: string; opacity: number }[] = [
-  { pos: [0, 0, -14], scale: 22, color: "#7c5cff", opacity: 0.22 }, // halo behind the monitor
-  { pos: [-13, 6, -26], scale: 30, color: "#7c5cff", opacity: 0.28 },
-  { pos: [15, -7, -34], scale: 38, color: "#4f6bff", opacity: 0.24 },
-  { pos: [-9, -9, -46], scale: 36, color: "#c05cff", opacity: 0.2 },
-  { pos: [18, 9, -54], scale: 44, color: "#5a3cff", opacity: 0.22 },
-  { pos: [0, 2, -70], scale: 60, color: "#3a2f7a", opacity: 0.22 },
+  { pos: [0, 0, -16], scale: 20, color: "#7c5cff", opacity: 0.1 }, // faint halo behind the monitor
+  { pos: [-15, 7, -30], scale: 32, color: "#7c5cff", opacity: 0.14 },
+  { pos: [17, -8, -38], scale: 40, color: "#4f6bff", opacity: 0.12 },
+  { pos: [-10, -10, -50], scale: 38, color: "#c05cff", opacity: 0.1 },
+  { pos: [20, 10, -58], scale: 46, color: "#5a3cff", opacity: 0.11 },
+  { pos: [0, 2, -74], scale: 62, color: "#3a2f7a", opacity: 0.12 },
 ];
 
 export function World() {
