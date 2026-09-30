@@ -109,8 +109,8 @@ export function Preloader() {
       {visible && (
         <motion.div
           className="fixed inset-0 z-[80] overflow-hidden bg-[#08080d]"
-          initial={{ y: 0 }}
-          animate={pct >= 100 ? { y: "-100%" } : { y: 0 }}
+          initial={{ opacity: 1 }}
+          animate={pct >= 100 ? { opacity: 0 } : { opacity: 1 }}
           transition={{ duration: 0.75, ease: EASE }}
         >
           <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" />
