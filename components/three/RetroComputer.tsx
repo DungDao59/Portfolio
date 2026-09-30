@@ -26,13 +26,19 @@ export function RetroComputer() {
       if (!mesh.isMesh) return;
       const mat = mesh.material as THREE.MeshStandardMaterial;
       if (!mat || !("name" in mat)) return;
-      if (mat.name === "metalDark") {
-        // screen → deep indigo-violet with a soft "powered-on" glow (matches theme)
+      if (mat.name === "metal") {
+        // display surface → deep indigo-violet with a soft "powered-on" glow
         mat.color.set("#1b1836");
         mat.emissive.set("#2a2350");
         mat.emissiveIntensity = 0.35;
+      } else if (mat.name === "metalDark") {
+        // exterior casing → light grey plastic
+        mat.color.set("#c2c2cc");
+        mat.emissive.set("#000000");
+        mat.emissiveIntensity = 0;
+        mat.metalness = 0.1;
+        mat.roughness = 0.75;
       }
-      // monitor exterior ("metal") left at the model's default color
     });
     const box = new THREE.Box3().setFromObject(s);
     const size = new THREE.Vector3();
