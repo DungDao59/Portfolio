@@ -9,7 +9,7 @@ const SceneCanvas = dynamic(
   { ssr: false }
 );
 import { Nav } from "@/components/ui/Nav";
-import { WorldGrid } from "@/components/ui/WorldGrid";
+import { WorldBackdrop } from "@/components/ui/WorldBackdrop";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
@@ -27,8 +27,8 @@ export default function Page() {
   return (
     <>
       <Preloader />
+      <WorldBackdrop />
       <SceneCanvas />
-      <WorldGrid />
       <ScrollProgress />
       <Nav />
       <main className="relative z-10">
