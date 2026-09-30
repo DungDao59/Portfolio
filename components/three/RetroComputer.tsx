@@ -31,11 +31,8 @@ export function RetroComputer() {
         mat.color.set("#1b1836");
         mat.emissive.set("#2a2350");
         mat.emissiveIntensity = 0.35;
-      } else if (mat.name === "metal") {
-        mat.color.set("#2a2a33"); // bezel/body → dark neutral
-        mat.metalness = 0.6;
-        mat.roughness = 0.5;
       }
+      // monitor exterior ("metal") left at the model's default color
     });
     const box = new THREE.Box3().setFromObject(s);
     const size = new THREE.Vector3();
