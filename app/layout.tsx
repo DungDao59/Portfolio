@@ -3,6 +3,7 @@ import { Space_Grotesk, Inter, Caveat } from "next/font/google";
 import "@/styles/globals.css";
 import { CapabilityProvider } from "@/providers/Capability";
 import { MotionProvider } from "@/providers/Motion";
+import ClickSpark from "@/components/ui/ClickSpark";
 import { content } from "@/lib/content";
 
 const spaceGrotesk = Space_Grotesk({
@@ -43,7 +44,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable} ${caveat.variable}`}>
       <body className="grain">
         <CapabilityProvider>
-          <MotionProvider>{children}</MotionProvider>
+          <MotionProvider>
+            <ClickSpark sparkColor="#7c5cff" sparkCount={8} sparkRadius={18} sparkSize={11} duration={450}>
+              {children}
+            </ClickSpark>
+          </MotionProvider>
         </CapabilityProvider>
       </body>
     </html>
