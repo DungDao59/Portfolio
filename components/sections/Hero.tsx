@@ -5,7 +5,7 @@ import { Section } from "@/components/ui/Section";
 import { RotatingText } from "@/components/ui/RotatingText";
 import { introState } from "@/lib/introState";
 import { lenisRef } from "@/providers/SmoothScroll";
-import { scrollProgress } from "@/components/three/ScrollCamera";
+import { getDive } from "@/lib/scroll";
 
 function useIntroActive() {
   return useSyncExternalStore(
@@ -22,7 +22,7 @@ function useScrolledAway(enabled: boolean) {
     if (!enabled) return;
     let raf = 0;
     const loop = () => {
-      setAway(scrollProgress > 0.04);
+      setAway(getDive() > 0.2);
       raf = requestAnimationFrame(loop);
     };
     raf = requestAnimationFrame(loop);
@@ -50,7 +50,7 @@ export function Hero({ immediate = false }: { immediate?: boolean }) {
     "rounded-md border-2 border-[#b9a6ff] px-7 py-3 text-sm font-bold uppercase tracking-wide text-[#e9e2ff] transition hover:bg-[#b9a6ff]/15";
 
   return (
-    <Section id="hero">
+    <Section id="hero" fullHeight>
       <div
         className={`transition-opacity duration-500 ${visible ? "opacity-100" : "opacity-0"}`}
       >

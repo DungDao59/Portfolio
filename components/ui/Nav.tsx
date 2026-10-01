@@ -2,8 +2,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { SECTIONS } from "@/lib/content";
-import { zoneIndexAt } from "@/lib/journey";
-import { scrollProgress } from "@/components/three/ScrollCamera";
 import { lenisRef } from "@/providers/SmoothScroll";
 
 const LABEL_MAP: Record<string, string> = {
@@ -22,14 +20,24 @@ function toLabel(id: string): string {
 
 export function Nav() {
   const [active, setActive] = useState(0);
+
   useEffect(() => {
-    let raf = 0;
-    const loop = () => {
-      setActive(zoneIndexAt(scrollProgress));
-      raf = requestAnimationFrame(loop);
-    };
-    raf = requestAnimationFrame(loop);
-    return () => cancelAnimationFrame(raf);
+    const obs = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            const i = SECTIONS.indexOf(e.target.id as (typeof SECTIONS)[number]);
+            if (i >= 0) setActive(i);
+          }
+        }
+      },
+      { rootMargin: "-45% 0px -45% 0px", threshold: 0 },
+    );
+    SECTIONS.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) obs.observe(el);
+    });
+    return () => obs.disconnect();
   }, []);
 
   function handleNavClick(e: React.MouseEvent<HTMLAnchorElement>, id: string) {

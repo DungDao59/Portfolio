@@ -2,27 +2,18 @@
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import * as THREE from "three";
-import { cameraAt } from "@/lib/journey";
+import { getDive } from "@/lib/scroll";
 import { introState } from "@/lib/introState";
 
-export let scrollProgress = 0;
-
+// Zooms the camera from the hero framing into the monitor screen as you dive in.
 export function ScrollCamera() {
-  // Persistent vectors to avoid per-frame allocations
-  const look = useRef(new THREE.Vector3(0, 0, 0));
-  const posTarget = useRef(new THREE.Vector3(0, 0, 0));
-  const lookTarget = useRef(new THREE.Vector3(0, 0, 0));
+  const target = useRef(new THREE.Vector3(0, 0, 3.8));
   useFrame((state) => {
-    // The intro sequence owns the camera until it hands off.
     if (introState.isActive()) return;
-    const max = document.body.scrollHeight - window.innerHeight;
-    scrollProgress = max > 0 ? window.scrollY / max : 0;
-    const { pos, lookAt } = cameraAt(scrollProgress);
-    posTarget.current.set(...pos);
-    lookTarget.current.set(...lookAt);
-    state.camera.position.lerp(posTarget.current, 0.06);
-    look.current.lerp(lookTarget.current, 0.06);
-    state.camera.lookAt(look.current);
+    const d = getDive();
+    target.current.set(0, 0, 3.8 + (0.4 - 3.8) * d); // 3.8 -> 0.4 (into the screen)
+    state.camera.position.lerp(target.current, 0.1);
+    state.camera.lookAt(0, 0, 0);
   });
   return null;
 }

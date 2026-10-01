@@ -1,12 +1,15 @@
 "use client";
 import { useEffect, useState } from "react";
-import { scrollProgress } from "@/components/three/ScrollCamera";
 
 export function ScrollProgress() {
   const [p, setP] = useState(0);
   useEffect(() => {
     let raf = 0;
-    const loop = () => { setP(scrollProgress); raf = requestAnimationFrame(loop); };
+    const loop = () => {
+      const max = document.body.scrollHeight - window.innerHeight;
+      setP(max > 0 ? window.scrollY / max : 0);
+      raf = requestAnimationFrame(loop);
+    };
     raf = requestAnimationFrame(loop);
     return () => cancelAnimationFrame(raf);
   }, []);

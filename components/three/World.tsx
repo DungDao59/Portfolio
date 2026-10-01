@@ -3,7 +3,6 @@ import { Stars } from "@react-three/drei";
 import { useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
-import { scrollProgress } from "./ScrollCamera";
 
 // A soft radial "blob" texture reused for the nebula clouds.
 function useNebulaTexture() {
@@ -31,8 +30,6 @@ const CLOUDS: { pos: [number, number, number]; scale: number; color: string; opa
   { pos: [-10, -10, -56], scale: 40, color: "#c05cff", opacity: 0.2 },
 ];
 
-const SEGMENT = 1 / 6; // hero -> about dive
-
 export function World() {
   const tex = useNebulaTexture();
   const clouds = useRef<THREE.Group>(null);
@@ -40,16 +37,7 @@ export function World() {
 
   useFrame((_, dt) => {
     if (stars.current) stars.current.rotation.y += dt * 0.005;
-    if (clouds.current) {
-      clouds.current.rotation.z += dt * 0.008;
-      // fade clouds out as we dive in, so the computer world is darker & cleaner
-      const fade = 1 - Math.min(1, scrollProgress / SEGMENT) * 0.85;
-      for (const child of clouds.current.children) {
-        const mesh = child as THREE.Mesh;
-        const mat = mesh.material as THREE.MeshBasicMaterial;
-        mat.opacity = (mesh.userData.base as number) * fade;
-      }
-    }
+    if (clouds.current) clouds.current.rotation.z += dt * 0.008;
   });
 
   return (
