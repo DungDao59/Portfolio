@@ -6,6 +6,15 @@
 html, body { background: var(--bg); color: var(--fg); }
 body { -webkit-font-smoothing: antialiased; overflow-x: hidden; font-family: var(--font-body, ui-sans-serif, system-ui, sans-serif); }
 
+/* lock scrolling to one full-height section at a time */
+html {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-snap-type: none; scroll-behavior: auto; }
+}
+
 /* animated gradient shimmer name — each letter carries the gradient with a
    staggered delay so the shimmer sweeps across the word as a wave */
 .name-letter {

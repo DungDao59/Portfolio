@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { SECTIONS } from "@/lib/content";
-import { lenisRef } from "@/providers/SmoothScroll";
 
 const LABEL_MAP: Record<string, string> = {
   hero: "Home",
@@ -41,10 +40,8 @@ export function Nav() {
   }, []);
 
   function handleNavClick(e: React.MouseEvent<HTMLAnchorElement>, id: string) {
-    if (lenisRef) {
-      e.preventDefault();
-      lenisRef.scrollTo(`#${id}`);
-    }
+    e.preventDefault();
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   }
 
   return (

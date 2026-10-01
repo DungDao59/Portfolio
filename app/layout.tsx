@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Inter, Caveat } from "next/font/google";
 import "@/styles/globals.css";
 import { CapabilityProvider } from "@/providers/Capability";
-import { SmoothScroll } from "@/providers/SmoothScroll";
 import { MotionProvider } from "@/providers/Motion";
 import { content } from "@/lib/content";
 
@@ -44,9 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable} ${caveat.variable}`}>
       <body className="grain">
         <CapabilityProvider>
-          <MotionProvider>
-            <SmoothScroll>{children}</SmoothScroll>
-          </MotionProvider>
+          <MotionProvider>{children}</MotionProvider>
         </CapabilityProvider>
       </body>
     </html>

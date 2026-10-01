@@ -4,7 +4,6 @@ import { content } from "@/lib/content";
 import { Section } from "@/components/ui/Section";
 import { RotatingText } from "@/components/ui/RotatingText";
 import { introState } from "@/lib/introState";
-import { lenisRef } from "@/providers/SmoothScroll";
 import { getDive } from "@/lib/scroll";
 
 function useIntroActive() {
@@ -38,10 +37,8 @@ export function Hero({ immediate = false }: { immediate?: boolean }) {
   const visible = immediate || (!introActive && !scrolledAway);
 
   const goContact = (e: React.MouseEvent) => {
-    if (lenisRef) {
-      e.preventDefault();
-      lenisRef.scrollTo("#contact");
-    }
+    e.preventDefault();
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
 
   const btnPrimary =
@@ -50,7 +47,7 @@ export function Hero({ immediate = false }: { immediate?: boolean }) {
     "rounded-md border-2 border-[#b9a6ff] px-7 py-3 text-sm font-bold uppercase tracking-wide text-[#e9e2ff] transition hover:bg-[#b9a6ff]/15";
 
   return (
-    <Section id="hero" fullHeight>
+    <Section id="hero">
       <div
         className={`transition-opacity duration-500 ${visible ? "opacity-100" : "opacity-0"}`}
       >

@@ -26,6 +26,7 @@ export const content = {
   handle: "DungDao59",
   initials: "DTD",
   title: "Full-Stack Developer",
+  location: "Ho Chi Minh City",
   tagline: "I build software that solves real problems.",
   status: "Available for internship",
   headline:
