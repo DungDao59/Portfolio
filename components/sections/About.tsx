@@ -40,7 +40,7 @@ export function About() {
                   <Image src={main} alt={content.name} fill sizes="200px" className="object-cover" />
                 </div>
               )}
-              <dl className="mt-4 space-y-1 font-mono text-[13px]">
+              <dl className="mt-5 space-y-2 font-mono text-sm">
                 {FACTS.map((f) => (
                   <div key={f.label} className="flex gap-3">
                     <dt className="w-20 shrink-0 text-accent">{f.label}:</dt>
@@ -65,13 +65,16 @@ export function About() {
 
               <div className="mt-5 border-t border-white/10 pt-4">
                 <p className="mb-3 font-mono text-sm text-accent">$ outside_of_code</p>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-3">
                   {thumbs.map((t) => (
                     <div
                       key={t.src}
-                      className="relative h-14 w-20 shrink-0 overflow-hidden rounded ring-1 ring-white/10 transition-transform hover:scale-110"
+                      style={{ transform: `rotate(${t.rotate}deg)` }}
+                      className="shrink-0 rounded-[2px] bg-[#f4f1ea] p-1 pb-3 shadow-[0_6px_14px_rgba(0,0,0,0.45)] transition-transform duration-200 hover:z-10 hover:rotate-0 hover:scale-110"
                     >
-                      <Image src={t.src} alt="" fill sizes="80px" className="object-cover" />
+                      <div className="relative h-12 w-16 overflow-hidden bg-black">
+                        <Image src={t.src} alt="" fill sizes="80px" className="object-cover" />
+                      </div>
                     </div>
                   ))}
                 </div>
