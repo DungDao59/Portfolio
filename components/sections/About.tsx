@@ -20,9 +20,9 @@ export function About() {
       <FlapHeading text="ABOUT ME" className="mb-5" fontSize="clamp(20px, 3.4vw, 32px)" />
       <Reveal>
         {/* themed profile "window" — capped to the viewport so it always fits one screen */}
-        <div className="mx-auto flex max-h-[74vh] w-full flex-col overflow-hidden rounded-xl border border-white/10 bg-white/[0.04] shadow-[0_24px_70px_rgba(0,0,0,0.5)] backdrop-blur-sm">
+        <div className="mx-auto flex max-h-[80vh] w-full flex-col overflow-hidden rounded-xl border border-white/10 bg-white/[0.04] shadow-[0_24px_70px_rgba(0,0,0,0.5)] backdrop-blur-sm">
           {/* title bar */}
-          <div className="flex shrink-0 items-center gap-3 border-b border-white/10 bg-white/[0.04] px-4 py-2">
+          <div className="flex shrink-0 items-center gap-3 border-b border-white/10 bg-white/[0.04] px-4 py-2.5">
             <span className="flex gap-1.5">
               <span className="h-3 w-3 rounded-full bg-[#ff5f56]" />
               <span className="h-3 w-3 rounded-full bg-[#ffbd2e]" />
@@ -32,21 +32,21 @@ export function About() {
           </div>
 
           {/* body */}
-          <div className="grid min-h-0 flex-1 gap-6 p-6 md:grid-cols-[30fr_70fr] md:gap-8">
+          <div className="grid min-h-0 flex-1 gap-8 p-7 md:grid-cols-[30fr_70fr] md:gap-10 md:p-8">
             {/* left: portrait (flexes to fill) + facts */}
             <div className="flex min-h-0 flex-col">
               {main && (
-                <div className="relative min-h-0 w-full flex-1 overflow-hidden rounded-lg bg-black/30 ring-1 ring-accent/30">
+                <div className="relative min-h-0 w-full flex-1 overflow-hidden rounded-lg ring-1 ring-accent/30">
                   <Image
                     src={main}
                     alt={content.name}
                     fill
                     sizes="(max-width: 768px) 100vw, 32vw"
-                    className="object-contain"
+                    className="object-cover object-top"
                   />
                 </div>
               )}
-              <dl className="mt-4 shrink-0 space-y-2 font-mono text-sm">
+              <dl className="mt-5 shrink-0 space-y-2.5 font-mono text-sm">
                 {FACTS.map((f) => (
                   <div key={f.label} className="flex gap-3">
                     <dt className="w-20 shrink-0 text-accent">{f.label}:</dt>
@@ -65,11 +65,11 @@ export function About() {
 
             {/* right: whoami + bio + polaroids */}
             <div className="flex min-h-0 flex-col">
-              <p className="mb-1 font-mono text-sm text-accent">$ whoami</p>
-              <h2 className="font-display mb-3 text-3xl font-bold">{content.name}</h2>
-              <p className="text-[15px] leading-relaxed text-muted">{content.about}</p>
+              <p className="mb-2 font-mono text-sm text-accent">$ whoami</p>
+              <h2 className="font-display mb-4 text-3xl font-bold md:text-4xl">{content.name}</h2>
+              <p className="text-base leading-relaxed text-muted">{content.about}</p>
 
-              <div className="mt-auto shrink-0 border-t border-white/10 pt-4">
+              <div className="mt-auto shrink-0 border-t border-white/10 pt-5">
                 <p className="mb-3 font-mono text-sm text-accent">$ outside_of_code</p>
                 <div className="flex pl-2">
                   {thumbs.map((t, i) => (
