@@ -56,6 +56,10 @@ export const content = {
     { src: "/about/3.jpg", portrait: false, rotate: -4, caption: "" },
     { src: "/about/4.jpg", portrait: false, rotate: 6, caption: "" },
     { src: "/about/5.jpg", portrait: false, rotate: -3, caption: "" },
+    { src: "/about/6.jpg", portrait: false, rotate: 4, caption: "" },
+    { src: "/about/7.jpg", portrait: false, rotate: -5, caption: "" },
+    { src: "/about/8.jpg", portrait: false, rotate: 3, caption: "" },
+    { src: "/about/9.jpg", portrait: false, rotate: -4, caption: "" },
   ],
   projects: [
     {
