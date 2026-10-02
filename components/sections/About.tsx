@@ -13,16 +13,16 @@ const FACTS: { label: string; value: string }[] = [
 
 export function About() {
   const main = content.photo ?? content.aboutPhotos[0]?.src;
-  const thumbs = content.aboutPhotos.slice(1); // all extra photos become thumbnails
+  const thumbs = content.aboutPhotos.slice(1); // all extra photos become polaroids
 
   return (
     <Section id="about">
       <FlapHeading text="ABOUT ME" className="mb-5" fontSize="clamp(20px, 3.4vw, 32px)" />
       <Reveal>
-        {/* themed profile "window" */}
-        <div className="mx-auto w-full overflow-hidden rounded-xl border border-white/10 bg-white/[0.04] shadow-[0_24px_70px_rgba(0,0,0,0.5)] backdrop-blur-sm">
+        {/* themed profile "window" — capped to the viewport so it always fits one screen */}
+        <div className="mx-auto flex max-h-[74vh] w-full flex-col overflow-hidden rounded-xl border border-white/10 bg-white/[0.04] shadow-[0_24px_70px_rgba(0,0,0,0.5)] backdrop-blur-sm">
           {/* title bar */}
-          <div className="flex items-center gap-3 border-b border-white/10 bg-white/[0.04] px-4 py-2">
+          <div className="flex shrink-0 items-center gap-3 border-b border-white/10 bg-white/[0.04] px-4 py-2">
             <span className="flex gap-1.5">
               <span className="h-3 w-3 rounded-full bg-[#ff5f56]" />
               <span className="h-3 w-3 rounded-full bg-[#ffbd2e]" />
@@ -32,15 +32,21 @@ export function About() {
           </div>
 
           {/* body */}
-          <div className="grid gap-6 p-6 md:grid-cols-[200px_1fr] md:gap-8">
-            {/* left: portrait + facts */}
-            <div>
+          <div className="grid min-h-0 flex-1 gap-6 p-6 md:grid-cols-[35fr_65fr] md:gap-8">
+            {/* left: portrait (flexes to fill) + facts */}
+            <div className="flex min-h-0 flex-col">
               {main && (
-                <div className="relative aspect-[4/5] w-full overflow-hidden rounded-lg ring-1 ring-accent/30">
-                  <Image src={main} alt={content.name} fill sizes="200px" className="object-cover" />
+                <div className="relative min-h-0 w-full flex-1 overflow-hidden rounded-lg ring-1 ring-accent/30">
+                  <Image
+                    src={main}
+                    alt={content.name}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 40vw"
+                    className="object-cover"
+                  />
                 </div>
               )}
-              <dl className="mt-5 space-y-2 font-mono text-sm">
+              <dl className="mt-4 shrink-0 space-y-2 font-mono text-sm">
                 {FACTS.map((f) => (
                   <div key={f.label} className="flex gap-3">
                     <dt className="w-20 shrink-0 text-accent">{f.label}:</dt>
@@ -57,23 +63,23 @@ export function About() {
               </dl>
             </div>
 
-            {/* right: whoami + bio + hobbies */}
-            <div className="flex min-w-0 flex-col">
+            {/* right: whoami + bio + polaroids */}
+            <div className="flex min-h-0 flex-col">
               <p className="mb-1 font-mono text-sm text-accent">$ whoami</p>
               <h2 className="font-display mb-3 text-3xl font-bold">{content.name}</h2>
-              <p className="max-w-2xl text-[15px] leading-relaxed text-muted">{content.about}</p>
+              <p className="text-[15px] leading-relaxed text-muted">{content.about}</p>
 
-              <div className="mt-5 border-t border-white/10 pt-4">
+              <div className="mt-auto shrink-0 border-t border-white/10 pt-4">
                 <p className="mb-3 font-mono text-sm text-accent">$ outside_of_code</p>
-                <div className="flex flex-wrap gap-3">
-                  {thumbs.map((t) => (
+                <div className="flex pl-2">
+                  {thumbs.map((t, i) => (
                     <div
                       key={t.src}
                       style={{ transform: `rotate(${t.rotate}deg)` }}
-                      className="shrink-0 rounded-[2px] bg-[#f4f1ea] p-1 pb-3 shadow-[0_6px_14px_rgba(0,0,0,0.45)] transition-transform duration-200 hover:z-10 hover:rotate-0 hover:scale-110"
+                      className={`${i > 0 ? "-ml-6" : ""} shrink-0 rounded-[2px] bg-[#f4f1ea] p-1 pb-3 shadow-[0_6px_16px_rgba(0,0,0,0.5)] transition-transform duration-200 hover:z-10 hover:rotate-0 hover:scale-110`}
                     >
-                      <div className="relative h-12 w-16 overflow-hidden bg-black">
-                        <Image src={t.src} alt="" fill sizes="80px" className="object-cover" />
+                      <div className="relative h-16 w-24 overflow-hidden bg-black">
+                        <Image src={t.src} alt="" fill sizes="96px" className="object-cover" />
                       </div>
                     </div>
                   ))}
