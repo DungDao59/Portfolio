@@ -32,17 +32,17 @@ export function About() {
           </div>
 
           {/* body */}
-          <div className="grid min-h-0 flex-1 gap-6 p-6 md:grid-cols-[35fr_65fr] md:gap-8">
+          <div className="grid min-h-0 flex-1 gap-6 p-6 md:grid-cols-[30fr_70fr] md:gap-8">
             {/* left: portrait (flexes to fill) + facts */}
             <div className="flex min-h-0 flex-col">
               {main && (
-                <div className="relative min-h-0 w-full flex-1 overflow-hidden rounded-lg ring-1 ring-accent/30">
+                <div className="relative min-h-0 w-full flex-1 overflow-hidden rounded-lg bg-black/30 ring-1 ring-accent/30">
                   <Image
                     src={main}
                     alt={content.name}
                     fill
-                    sizes="(max-width: 768px) 100vw, 40vw"
-                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 32vw"
+                    className="object-contain"
                   />
                 </div>
               )}
