@@ -3,7 +3,15 @@ import { useEffect, useRef, useState } from "react";
 import SplitFlapText from "./SplitFlapText";
 
 // A section-title split-flap board that flips in from blank when scrolled into view.
-export function FlapHeading({ text, className = "" }: { text: string; className?: string }) {
+export function FlapHeading({
+  text,
+  className = "",
+  fontSize = "clamp(22px, 4.5vw, 42px)",
+}: {
+  text: string;
+  className?: string;
+  fontSize?: string;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const [shown, setShown] = useState(false);
 
@@ -28,7 +36,7 @@ export function FlapHeading({ text, className = "" }: { text: string; className?
     textColor: "#ededed",
     tileRadius: 6,
     gap: 5,
-    fontSize: "clamp(22px, 4.5vw, 42px)",
+    fontSize,
     padTo: text.length,
     flipDuration: 0.1,
     stagger: 0.04,

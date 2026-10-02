@@ -17,12 +17,12 @@ export function About() {
 
   return (
     <Section id="about">
-      <FlapHeading text="ABOUT" className="mb-8" />
+      <FlapHeading text="ABOUT ME" className="mb-5" fontSize="clamp(20px, 3.4vw, 32px)" />
       <Reveal>
         {/* themed profile "window" */}
         <div className="mx-auto w-full overflow-hidden rounded-xl border border-white/10 bg-white/[0.04] shadow-[0_24px_70px_rgba(0,0,0,0.5)] backdrop-blur-sm">
           {/* title bar */}
-          <div className="flex items-center gap-3 border-b border-white/10 bg-white/[0.04] px-4 py-2.5">
+          <div className="flex items-center gap-3 border-b border-white/10 bg-white/[0.04] px-4 py-2">
             <span className="flex gap-1.5">
               <span className="h-3 w-3 rounded-full bg-[#ff5f56]" />
               <span className="h-3 w-3 rounded-full bg-[#ffbd2e]" />
@@ -32,15 +32,15 @@ export function About() {
           </div>
 
           {/* body */}
-          <div className="grid gap-6 p-6 md:grid-cols-[260px_1fr] md:gap-9 md:p-8">
+          <div className="grid gap-6 p-6 md:grid-cols-[200px_1fr] md:gap-8">
             {/* left: portrait + facts */}
             <div>
               {main && (
                 <div className="relative aspect-[4/5] w-full overflow-hidden rounded-lg ring-1 ring-accent/30">
-                  <Image src={main} alt={content.name} fill sizes="260px" className="object-cover" />
+                  <Image src={main} alt={content.name} fill sizes="200px" className="object-cover" />
                 </div>
               )}
-              <dl className="mt-5 space-y-1.5 font-mono text-[13px]">
+              <dl className="mt-4 space-y-1 font-mono text-[13px]">
                 {FACTS.map((f) => (
                   <div key={f.label} className="flex gap-3">
                     <dt className="w-20 shrink-0 text-accent">{f.label}:</dt>
@@ -59,11 +59,11 @@ export function About() {
 
             {/* right: whoami + bio + hobbies */}
             <div className="flex min-w-0 flex-col">
-              <p className="mb-1.5 font-mono text-sm text-accent">$ whoami</p>
-              <h2 className="font-display mb-4 text-3xl font-bold md:text-4xl">{content.name}</h2>
-              <p className="max-w-2xl text-base leading-relaxed text-muted">{content.about}</p>
+              <p className="mb-1 font-mono text-sm text-accent">$ whoami</p>
+              <h2 className="font-display mb-3 text-3xl font-bold">{content.name}</h2>
+              <p className="max-w-2xl text-[15px] leading-relaxed text-muted">{content.about}</p>
 
-              <div className="mt-6 border-t border-white/10 pt-5">
+              <div className="mt-5 border-t border-white/10 pt-4">
                 <p className="mb-3 font-mono text-sm text-accent">$ outside_of_code</p>
                 <div className="flex flex-wrap gap-2">
                   {thumbs.map((t) => (
