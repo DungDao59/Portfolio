@@ -65,13 +65,13 @@ export function About() {
 
               <div className="mt-6 border-t border-white/10 pt-5">
                 <p className="mb-3 font-mono text-sm text-accent">$ outside_of_code</p>
-                <div className="grid grid-cols-4 gap-2.5">
+                <div className="flex flex-wrap gap-2">
                   {thumbs.map((t) => (
                     <div
                       key={t.src}
-                      className="relative aspect-[4/3] w-full overflow-hidden rounded-md ring-1 ring-white/10 transition-transform hover:scale-105"
+                      className="relative h-14 w-20 shrink-0 overflow-hidden rounded ring-1 ring-white/10 transition-transform hover:scale-110"
                     >
-                      <Image src={t.src} alt="" fill sizes="200px" className="object-cover" />
+                      <Image src={t.src} alt="" fill sizes="80px" className="object-cover" />
                     </div>
                   ))}
                 </div>
