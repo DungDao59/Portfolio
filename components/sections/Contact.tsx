@@ -1,11 +1,13 @@
 import { content } from "@/lib/content";
 import { Section } from "@/components/ui/Section";
 import { Reveal } from "@/components/ui/Reveal";
+import { FlapHeading } from "@/components/ui/FlapHeading";
 
 export function Contact() {
   return (
     <Section id="contact">
-      <div className="text-center">
+      <div className="flex flex-col items-center text-center">
+        <FlapHeading text="CONTACT" className="mb-8 flex justify-center" />
         <Reveal>
           <h2 className="font-display text-5xl font-bold md:text-7xl">Let's build something.</h2>
         </Reveal>

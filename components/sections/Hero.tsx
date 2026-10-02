@@ -3,6 +3,7 @@ import { useEffect, useState, useSyncExternalStore } from "react";
 import { content } from "@/lib/content";
 import { Section } from "@/components/ui/Section";
 import { RotatingText } from "@/components/ui/RotatingText";
+import SplitFlapText from "@/components/ui/SplitFlapText";
 import { introState } from "@/lib/introState";
 import { getDive } from "@/lib/scroll";
 
@@ -75,13 +76,21 @@ export function Hero({ immediate = false }: { immediate?: boolean }) {
               Contact Info
             </a>
           </div>
-          <p
-            className="blink mt-7 flex items-center justify-center gap-2 text-sm font-semibold uppercase tracking-widest text-[#4ade80]"
-            style={{ textShadow: "0 0 10px rgba(74,222,128,0.6)" }}
-          >
-            <span className="inline-block h-2 w-2 rounded-full bg-[#4ade80]" />
-            {content.status}
-          </p>
+          <div className="mt-7 flex justify-center">
+            <SplitFlapText
+              words={content.statusWords}
+              tileColor="#14122b"
+              textColor="#4ade80"
+              fontSize={16}
+              gap={3}
+              tileRadius={3}
+              flipDuration={0.1}
+              stagger={0.03}
+              cycleDelay={2200}
+              flipsPerChar={6}
+              padTo={12}
+            />
+          </div>
         </div>
       </div>
     </Section>

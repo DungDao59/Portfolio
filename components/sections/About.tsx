@@ -2,6 +2,7 @@ import Image from "next/image";
 import { content } from "@/lib/content";
 import { Section } from "@/components/ui/Section";
 import { Reveal } from "@/components/ui/Reveal";
+import { FlapHeading } from "@/components/ui/FlapHeading";
 
 const FACTS: { label: string; value: string }[] = [
   { label: "role", value: content.title },
@@ -16,6 +17,7 @@ export function About() {
 
   return (
     <Section id="about">
+      <FlapHeading text="ABOUT" className="mb-8" />
       <Reveal>
         {/* themed profile "window" */}
         <div className="mx-auto w-full overflow-hidden rounded-xl border border-white/10 bg-white/[0.04] shadow-[0_24px_70px_rgba(0,0,0,0.5)] backdrop-blur-sm">

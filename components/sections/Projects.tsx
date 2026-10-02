@@ -1,12 +1,13 @@
 import { content } from "@/lib/content";
 import { Section } from "@/components/ui/Section";
 import { Reveal } from "@/components/ui/Reveal";
+import { FlapHeading } from "@/components/ui/FlapHeading";
 
 export function Projects() {
   return (
     <Section id="projects">
       <div className="w-full">
-        <Reveal><h2 className="font-display mb-10 text-4xl font-bold">Projects</h2></Reveal>
+        <FlapHeading text="PROJECTS" className="mb-10" />
         <div className="grid gap-8 md:grid-cols-3">
           {content.projects.map((p, i) => (
             <Reveal key={p.id} delay={i * 0.1}>

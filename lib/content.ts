@@ -29,6 +29,7 @@ export const content = {
   location: "Ho Chi Minh City",
   tagline: "I build software that solves real problems.",
   status: "Available for internship",
+  statusWords: ["AVAILABLE", "OPEN TO WORK", "LET'S BUILD"],
   headline:
     "Turning complex challenges into clean, reliable web applications — from database to interface.",
   roles: [

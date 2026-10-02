@@ -1,12 +1,13 @@
 import { content } from "@/lib/content";
 import { Section } from "@/components/ui/Section";
 import { Reveal } from "@/components/ui/Reveal";
+import { FlapHeading } from "@/components/ui/FlapHeading";
 
 export function TechStack() {
   return (
     <Section id="tech">
       <div className="w-full text-center">
-        <Reveal><h2 className="font-display mb-10 text-4xl font-bold">Tech Stack</h2></Reveal>
+        <FlapHeading text="TECH STACK" className="mb-10 flex justify-center" />
         <div className="flex flex-wrap justify-center gap-3">
           {content.techStack.map((t, i) => (
             <Reveal key={t} delay={i * 0.05}>

@@ -1,12 +1,13 @@
 import { content } from "@/lib/content";
 import { Section } from "@/components/ui/Section";
 import { Reveal } from "@/components/ui/Reveal";
+import { FlapHeading } from "@/components/ui/FlapHeading";
 
 export function Experience() {
   return (
     <Section id="experience">
       <div className="w-full">
-        <Reveal><h2 className="font-display mb-10 text-4xl font-bold">Experience</h2></Reveal>
+        <FlapHeading text="EXPERIENCE" className="mb-10" />
         <div className="relative border-l border-accent/30 pl-8">
           {content.experience.map((e, i) => (
             <Reveal key={e.id} delay={i * 0.1}>
