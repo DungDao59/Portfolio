@@ -49,6 +49,7 @@ export const content = {
   about:
     "Hi, I'm Dao Tien Dung, a full-stack developer with two years of experience building web applications with PostgreSQL, Express, React/Next.js, and Node.js. I enjoy backend work most: designing the logic and data flow that make an app reliable. One project I'm proud of is automating my university club's workflow, so tech and non-tech members could finally work from the same process. Outside of code, you'll usually find me on the football pitch.",
   photo: "/profile.jpg" as string | undefined,
+  avatar: "/profile-avatar.jpg", // pre-cropped square (head → mid-chest) for the About circle
   cv: "/Dung-Dao-CV.pdf",
   aboutPhotos: [
     { src: "/about/1.jpg", portrait: true, rotate: -7, caption: "" },

@@ -39,21 +39,18 @@ export function About() {
                 <div
                   className="relative mx-auto aspect-square overflow-hidden rounded-full ring-1 ring-accent/30"
                   style={{
-                    width: "clamp(200px, calc(100svh - 420px), 420px)",
+                    width: "clamp(200px, calc(100svh - 480px), 420px)",
                     maxWidth: "100%",
                   }}
                 >
                   <Image
-                    src={main}
+                    src={content.avatar}
                     alt={content.name}
                     fill
                     sizes="420px"
+                    quality={90}
+                    priority
                     className="object-cover"
-                    style={{
-                      objectPosition: "50% 0%",
-                      transform: "scale(2.13)",
-                      transformOrigin: "49% 30%",
-                    }}
                   />
                 </div>
               )}
