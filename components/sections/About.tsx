@@ -77,16 +77,22 @@ export function About() {
               <h2 className="font-display mb-4 text-3xl font-bold md:text-4xl">{content.name}</h2>
               <p className="text-base leading-relaxed text-muted">{content.about}</p>
 
-              <div className="mt-auto shrink-0 border-t border-white/10 pt-5">
-                <p className="mb-3 font-mono text-sm text-accent">$ outside_of_code</p>
-                <div className="flex pl-2">
+              <div className="mt-8 shrink-0 border-t border-white/10 pt-6">
+                <p className="mb-4 font-mono text-sm text-accent">$ outside_of_code</p>
+                <div className="flex">
                   {thumbs.map((t, i) => (
                     <div
                       key={t.src}
-                      style={{ transform: `rotate(${t.rotate}deg)` }}
-                      className={`${i > 0 ? "-ml-6" : ""} shrink-0 rounded-[2px] bg-[#f4f1ea] p-1 pb-3 shadow-[0_6px_16px_rgba(0,0,0,0.5)] transition-transform duration-200 hover:z-10 hover:rotate-0 hover:scale-110`}
+                      style={{
+                        transform: `rotate(${t.rotate}deg)`,
+                        marginLeft:
+                          i === 0
+                            ? undefined
+                            : `calc((100% - ${thumbs.length} * 104px) / ${thumbs.length - 1})`,
+                      }}
+                      className="shrink-0 rounded-[2px] bg-[#f4f1ea] p-1 pb-3 shadow-[0_6px_16px_rgba(0,0,0,0.5)] transition-transform duration-200 hover:z-10 hover:rotate-0 hover:scale-110"
                     >
-                      <div className="relative h-16 w-24 overflow-hidden bg-black">
+                      <div className="relative h-20 w-24 overflow-hidden bg-black">
                         <Image src={t.src} alt="" fill sizes="96px" className="object-cover" />
                       </div>
                     </div>
