@@ -20,9 +20,9 @@ export function About() {
       <FlapHeading text="ABOUT ME" className="mb-5" fontSize="clamp(20px, 3.4vw, 32px)" />
       <Reveal>
         {/* themed profile "window" — capped to the viewport so it always fits one screen */}
-        <div className="mx-auto flex max-h-[80vh] w-full flex-col overflow-hidden rounded-xl border border-white/10 bg-white/[0.04] shadow-[0_24px_70px_rgba(0,0,0,0.5)] backdrop-blur-sm">
+        <div className="mx-auto w-full overflow-hidden rounded-xl border border-white/10 bg-white/[0.04] shadow-[0_24px_70px_rgba(0,0,0,0.5)] backdrop-blur-sm">
           {/* title bar */}
-          <div className="flex shrink-0 items-center gap-3 border-b border-white/10 bg-white/[0.04] px-4 py-2.5">
+          <div className="flex items-center gap-3 border-b border-white/10 bg-white/[0.04] px-4 py-2.5">
             <span className="flex gap-1.5">
               <span className="h-3 w-3 rounded-full bg-[#ff5f56]" />
               <span className="h-3 w-3 rounded-full bg-[#ffbd2e]" />
@@ -32,17 +32,23 @@ export function About() {
           </div>
 
           {/* body */}
-          <div className="grid min-h-0 flex-1 gap-8 p-7 md:grid-cols-[30fr_70fr] md:gap-10 md:p-8">
-            {/* left: portrait (flexes to fill) + facts */}
-            <div className="flex min-h-0 flex-col">
+          <div className="grid gap-8 p-7 md:grid-cols-[30fr_70fr] md:gap-10 md:p-8">
+            {/* left: portrait (full photo, sized by height) + facts */}
+            <div className="flex flex-col">
               {main && (
-                <div className="relative min-h-0 w-full flex-1 overflow-hidden rounded-lg ring-1 ring-accent/30">
+                <div
+                  className="relative w-full overflow-hidden rounded-lg ring-1 ring-accent/30"
+                  style={{
+                    height: "clamp(220px, calc(100svh - 420px), 600px)",
+                    backgroundColor: "#707d84",
+                  }}
+                >
                   <Image
                     src={main}
                     alt={content.name}
                     fill
                     sizes="(max-width: 768px) 100vw, 32vw"
-                    className="object-cover object-top"
+                    className="object-contain"
                   />
                 </div>
               )}
