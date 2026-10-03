@@ -1,6 +1,8 @@
 export type Project = {
   id: string;
   title: string;
+  name: string; // short label shown on the accordion panel
+  tagline: string; // one-liner shown under the name
   description: string;
   tech: string[];
   live?: string;
@@ -66,26 +68,46 @@ export const content = {
     {
       id: "aff",
       title: "AFF — Food Donation Platform",
+      name: "AFF",
+      tagline: "Food Donation website",
       description:
         "A food-donation platform aimed at cutting food waste. People can donate surplus food or list it for free or at low cost, so those in need can find and claim it.",
       tech: ["MongoDB", "Express", "React", "Node.js"],
       live: "https://team3-v4u6.onrender.com/",
+      image: "/projects/aff.png",
     },
     {
       id: "nct-hub",
       title: "NCT Hub",
+      name: "NCT Hub",
+      tagline: "RMIT Neo Culture Tech website",
       description:
         "The official site for RMIT Neo Culture Tech Club — showcasing its achievements and journey, and home to internal tools built along the way like Neo Shortener, Neo Generator, and Neo Scanner.",
       tech: ["Next.js", "Supabase", "Docker"],
       live: "https://rmitnct.club/",
       github: "https://github.com/rmit-nct/hub",
+      image: "/projects/nct-hub.png",
     },
     {
       id: "motul-epr",
       title: "Motul EPR Data Management",
+      name: "Motul EPR",
+      tagline: "EPR Platform",
       description:
         "An outsourced platform digitizing Motul's recycled-oil management workflow — tracking collection and the real data collected, and standardizing their process into a clean, reliable web app.",
       tech: ["TypeScript", "Next.js", "Supabase", "Prisma", "Railway"],
+      image: "/projects/motul.png",
+    },
+    {
+      id: "neo-weather",
+      title: "Neo What Weather",
+      name: "Neo What Weather",
+      tagline: "Weather forecasting website",
+      description:
+        "A modern, responsive weather app with real-time conditions, a five-day forecast, and interactive charts — built with the RMIT Neo Culture Tech team using React, TypeScript, and the OpenWeather API.",
+      tech: ["React", "TypeScript", "Vite", "Chart.js", "TanStack Query"],
+      github: "https://github.com/rmit-nct/neo-what-weather",
+      image: "/projects/neo-weather.png",
     },
   ] satisfies Project[],
   techStack: [
