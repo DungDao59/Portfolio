@@ -37,18 +37,23 @@ export function About() {
             <div className="flex flex-col">
               {main && (
                 <div
-                  className="relative w-full overflow-hidden rounded-lg ring-1 ring-accent/30"
+                  className="relative mx-auto aspect-square overflow-hidden rounded-full ring-1 ring-accent/30"
                   style={{
-                    height: "clamp(220px, calc(100svh - 420px), 600px)",
-                    backgroundColor: "#707d84",
+                    width: "clamp(200px, calc(100svh - 420px), 420px)",
+                    maxWidth: "100%",
                   }}
                 >
                   <Image
                     src={main}
                     alt={content.name}
                     fill
-                    sizes="(max-width: 768px) 100vw, 32vw"
-                    className="object-contain"
+                    sizes="420px"
+                    className="object-cover"
+                    style={{
+                      objectPosition: "50% 0%",
+                      transform: "scale(2.13)",
+                      transformOrigin: "49% 30%",
+                    }}
                   />
                 </div>
               )}
