@@ -81,9 +81,14 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
+  /* dim layer only — 0 for inactive panels so they stay bright & colorful */
+  background: color-mix(in srgb, var(--ag-overlay) calc(var(--ag-dim, 0) * 100%), transparent);
+}
+
+/* legibility gradient lives only on the active panel (where text is shown) */
+.ag-panel--active .ag-panel__overlay {
   background:
-    linear-gradient(180deg, transparent 45%, color-mix(in srgb, var(--ag-overlay) 78%, transparent) 100%),
-    color-mix(in srgb, var(--ag-overlay) calc(var(--ag-dim, 0.35) * 100%), transparent);
+    linear-gradient(180deg, transparent 40%, color-mix(in srgb, var(--ag-overlay) 82%, transparent) 100%);
 }
 
 .ag-panel__label {

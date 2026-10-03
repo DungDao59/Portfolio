@@ -85,7 +85,7 @@ export function Projects() {
             radius={16}
             expandRatio={0.6}
             trigger="hover"
-            grayscale
+            grayscale={false}
             renderContent={(item) => <PanelContent project={item.project} />}
           />
         </Reveal>

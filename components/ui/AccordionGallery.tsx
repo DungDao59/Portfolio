@@ -115,7 +115,9 @@ export default function AccordionGallery<T extends AccordionItem>({
               x: vertical ? 0 : isActive ? 0 : shift,
               y: vertical ? (isActive ? 0 : shift) : 0,
               "--ag-gray": gray,
-              "--ag-dim": isActive ? 0 : 0.35,
+              // keep inactive panels bright & colorful — only the active panel
+              // gets its full legibility treatment via the bottom gradient
+              "--ag-dim": grayscale && !isActive ? 0.35 : 0,
               duration: dur,
               ease,
             },
