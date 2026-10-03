@@ -32,12 +32,7 @@ function PanelContent({ project }: { project: Project }) {
           {project.name}
         </h3>
       </div>
-      <p className="flex gap-2 text-sm font-medium leading-snug text-[#c8b8ff]">
-        <span aria-hidden="true" className="select-none text-accent">
-          ★
-        </span>
-        <span>{project.highlight}</span>
-      </p>
+      <p className="text-sm leading-snug text-white/85">{project.description}</p>
       <ul className="flex flex-wrap gap-1.5">
         {project.tech.map((t) => (
           <li
