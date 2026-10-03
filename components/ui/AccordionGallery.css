@@ -87,8 +87,12 @@
 
 /* legibility gradient lives only on the active panel (where text is shown) */
 .ag-panel--active .ag-panel__overlay {
-  background:
-    linear-gradient(180deg, transparent 40%, color-mix(in srgb, var(--ag-overlay) 82%, transparent) 100%);
+  background: linear-gradient(
+    180deg,
+    transparent 8%,
+    color-mix(in srgb, var(--ag-overlay) 55%, transparent) 48%,
+    color-mix(in srgb, var(--ag-overlay) 92%, transparent) 100%
+  );
 }
 
 .ag-panel__label {

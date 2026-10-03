@@ -2,7 +2,8 @@ export type Project = {
   id: string;
   title: string;
   name: string; // short label shown on the accordion panel
-  tagline: string; // one-liner shown under the name
+  role: string; // your role on the project
+  highlight: string; // the one impact/contribution line to lead with
   description: string;
   tech: string[];
   live?: string;
@@ -67,12 +68,14 @@ export const content = {
   projects: [
     {
       id: "aff",
-      title: "AFF — Food Donation Platform",
+      title: "AFF — Affordable Food Federation",
       name: "AFF",
-      tagline: "Food Donation website",
+      role: "Full-Stack Developer",
+      highlight:
+        "Owned auth, profiles & payments — secured 19 REST endpoints and shipped idempotent Stripe/wallet checkout.",
       description:
-        "A food-donation platform aimed at cutting food waste. People can donate surplus food or list it for free or at low cost, so those in need can find and claim it.",
-      tech: ["MongoDB", "Express", "React", "Node.js"],
+        "A food-donation platform connecting donors with recipients to cut food waste, built by a 4-person team with React, Node.js, and MongoDB.",
+      tech: ["MongoDB", "Express", "React", "Node.js", "Stripe", "JWT"],
       live: "https://team3-v4u6.onrender.com/",
       image: "/projects/aff.png",
     },
@@ -80,9 +83,11 @@ export const content = {
       id: "nct-hub",
       title: "NCT Hub",
       name: "NCT Hub",
-      tagline: "RMIT Neo Culture Tech website",
+      role: "Head of Technology",
+      highlight:
+        "Coordinated 10+ projects across 11 teams in 2 months, shipping 100% on time.",
       description:
-        "The official site for RMIT Neo Culture Tech Club — showcasing its achievements and journey, and home to internal tools built along the way like Neo Shortener, Neo Generator, and Neo Scanner.",
+        "The official site for RMIT Neo Culture Tech Club, where 50+ members showcase the club, record achievements, and use in-house tools like Neo Shortener, Generator, and Scanner.",
       tech: ["Next.js", "Supabase", "Docker"],
       live: "https://rmitnct.club/",
       github: "https://github.com/rmit-nct/hub",
@@ -90,21 +95,25 @@ export const content = {
     },
     {
       id: "motul-epr",
-      title: "Motul EPR Data Management",
+      title: "Motul EPR Compliance Platform",
       name: "Motul EPR",
-      tagline: "EPR Platform",
+      role: "Backend Developer",
+      highlight:
+        "Built REST APIs, business rules, and a Supabase-Auth password-reset flow with Zod validation.",
       description:
-        "An outsourced platform digitizing Motul's recycled-oil management workflow — tracking collection and the real data collected, and standardizing their process into a clean, reliable web app.",
-      tech: ["TypeScript", "Next.js", "Supabase", "Prisma", "Railway"],
+        "A platform digitizing Motul's used-oil EPR workflow — tracking waste-oil collection from owners to recyclers for 100+ registered accounts.",
+      tech: ["TypeScript", "Express", "Supabase", "Prisma", "Zod"],
       image: "/projects/motul.png",
     },
     {
       id: "neo-weather",
       title: "Neo What Weather",
       name: "Neo What Weather",
-      tagline: "Weather forecasting website",
+      role: "Contributor",
+      highlight:
+        "Built the 5-day forecast card and resolved the final merge conflicts.",
       description:
-        "A modern, responsive weather app with real-time conditions, a five-day forecast, and interactive charts — built with the RMIT Neo Culture Tech team using React, TypeScript, and the OpenWeather API.",
+        "A responsive weather app with real-time conditions, a five-day forecast, and interactive charts — built with the RMIT Neo Culture Tech team using React, TypeScript, and the OpenWeather API.",
       tech: ["React", "TypeScript", "Vite", "Chart.js", "TanStack Query"],
       github: "https://github.com/rmit-nct/neo-what-weather",
       image: "/projects/neo-weather.png",

@@ -11,7 +11,7 @@ type ProjectItem = AccordionItem & { project: Project };
 const items: ProjectItem[] = content.projects.map((p) => ({
   image: p.image ?? "",
   label: p.name,
-  alt: `${p.name} — ${p.tagline}`,
+  alt: `${p.name} — ${p.role}`,
   project: p,
 }));
 
@@ -23,25 +23,34 @@ const defaultIndex = Math.max(
 
 function PanelContent({ project }: { project: Project }) {
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex max-w-[34rem] flex-col gap-2.5">
       <div>
-        <h3 className="font-display text-2xl font-bold leading-tight text-white md:text-3xl">
+        <span className="inline-block rounded-full border border-accent/60 bg-accent/15 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-[#e9e2ff] backdrop-blur-sm">
+          {project.role}
+        </span>
+        <h3 className="font-display mt-2 text-2xl font-bold leading-tight text-white md:text-3xl">
           {project.name}
         </h3>
-        <p className="mt-1 text-sm text-white/80">{project.tagline}</p>
       </div>
+      <p className="text-sm leading-snug text-white/85">{project.description}</p>
+      <p className="flex gap-2 text-sm font-medium leading-snug text-[#c8b8ff]">
+        <span aria-hidden="true" className="select-none text-accent">
+          ★
+        </span>
+        <span>{project.highlight}</span>
+      </p>
       <ul className="flex flex-wrap gap-1.5">
         {project.tech.map((t) => (
           <li
             key={t}
-            className="rounded-full border border-accent/50 bg-black/30 px-2 py-0.5 text-[11px] font-medium text-[#e9e2ff] backdrop-blur-sm"
+            className="rounded-full border border-white/25 bg-black/30 px-2 py-0.5 text-[11px] font-medium text-white/90 backdrop-blur-sm"
           >
             {t}
           </li>
         ))}
       </ul>
       {(project.live || project.github) && (
-        <div className="flex gap-3 text-sm font-semibold">
+        <div className="mt-0.5 flex gap-3 text-sm font-semibold">
           {project.live && (
             <a
               href={project.live}
