@@ -179,8 +179,10 @@ export const content = {
       summary:
         "Lead the club's technology department — spotting real problems within the club and automating them into one larger internal ecosystem.",
       bullets: [
-        "Coordinated 10+ projects across 11 teams in 2 months, shipping 100% on time",
-        "Build & maintain NCT Hub (50+ members) and organized a 70+ participant tech contest",
+        "Lead the tech department — turning real club problems into tools within one internal ecosystem",
+        "Coordinated 10+ projects across 11 teams in 2 months, shipping 100% on time via weekly reviews",
+        "Build & maintain NCT Hub (Next.js) — used by 50+ members for tools, projects & achievements",
+        "Organizing a university-wide tech contest for 70+ participants across 4 majors",
       ],
       tags: ["Next.js", "Leadership", "Project Management"],
     },
@@ -195,7 +197,8 @@ export const content = {
       summary: "Helped organize the RMIT Neo League competition.",
       bullets: [
         "Designed contest problems for participants to solve",
-        "Prepared the supporting documentation",
+        "Prepared the supporting problem documentation",
+        "Helped run Season 2 of RMIT's flagship tech competition",
       ],
       tags: ["Problem Design", "Operations"],
     },
@@ -209,8 +212,9 @@ export const content = {
       logo: "/experience/nct.png",
       summary: "Contributed to numerous club projects before stepping up to lead.",
       bullets: [
-        "Built the 5-day forecast card for Neo What Weather",
-        "Added a QR generator tool to NCT Hub, and helped maintain & improve it",
+        "Built the 5-day forecast card for Neo What Weather using React & the OpenWeather API",
+        "Added a QR generator tool to NCT Hub",
+        "Helped maintain and improve NCT Hub across releases",
       ],
       tags: ["React", "TypeScript", "Next.js"],
     },
@@ -224,7 +228,8 @@ export const content = {
       logo: "/experience/rmit.png",
       summary: "Competed in RMIT's AI prompting competition.",
       bullets: [
-        "Trained an AI model and built a game app",
+        "Trained an AI model for the competition's challenges",
+        "Built a game app driven by AI prompting",
         "Probed AI systems for security weaknesses",
       ],
       tags: ["AI", "Prompt Engineering", "Security"],

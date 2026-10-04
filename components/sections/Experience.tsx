@@ -96,7 +96,7 @@ export function Experience() {
         {/* ---------- desktop: horizontal journey ---------- */}
         <div className="hidden md:block">
           {/* detail card for the active node */}
-          <div className="min-h-[196px]">
+          <div className="min-h-[232px]">
             <AnimatePresence mode="wait">
               <motion.div
                 key={journey[active].id}
@@ -112,19 +112,29 @@ export function Experience() {
 
           {/* the path + nodes */}
           <div className="relative mt-8 h-[120px]">
-            {/* glowing line, draws on reveal */}
+            {/* dim base path, draws on reveal */}
             <motion.span
               aria-hidden="true"
-              className="absolute top-[9px] h-[2px] origin-left rounded-full bg-gradient-to-r from-accent/20 via-accent to-accent/20"
+              className="absolute top-[11px] h-[2px] origin-left rounded-full bg-white/15"
               style={{ left: `${first}%`, right: `${100 - last}%` }}
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true, margin: "-20%" }}
               transition={{ duration: 0.9, ease: "easeInOut" }}
             />
+            {/* glowing traveled path, grows/retracts to the active node */}
+            <motion.span
+              aria-hidden="true"
+              className="absolute top-[11px] h-[2px] rounded-full bg-accent shadow-[0_0_12px_2px_rgba(124,92,255,0.7)]"
+              style={{ left: `${first}%` }}
+              initial={{ right: `${100 - first}%` }}
+              animate={{ right: `${100 - posOf(active)}%` }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+            />
 
             {journey.map((e, i) => {
               const isActive = i === active;
+              const traveled = i < active; // lit, already on the path
               return (
                 <button
                   key={e.id}
@@ -138,27 +148,38 @@ export function Experience() {
                   aria-label={`${e.role} at ${e.org}`}
                 >
                   {/* dot */}
-                  <span className="relative flex h-[18px] w-[18px] items-center justify-center">
+                  <span className="relative flex h-6 w-6 items-center justify-center">
                     {isActive && (
-                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
+                      <>
+                        <span className="absolute inline-flex h-6 w-6 animate-ping rounded-full bg-accent opacity-50" />
+                        <span className="absolute inline-flex h-6 w-6 rounded-full bg-accent/25 blur-[2px]" />
+                      </>
                     )}
                     <span
                       className={`relative inline-flex rounded-full ring-2 ring-bg transition-all duration-300 ${
                         isActive
-                          ? "h-[18px] w-[18px] bg-accent shadow-[0_0_14px_rgba(124,92,255,0.95)]"
-                          : "h-3 w-3 bg-accent/50"
+                          ? "h-[20px] w-[20px] bg-accent shadow-[0_0_18px_4px_rgba(124,92,255,0.95)]"
+                          : traveled
+                            ? "h-3 w-3 bg-accent shadow-[0_0_8px_rgba(124,92,255,0.6)]"
+                            : "h-3 w-3 border border-accent/40 bg-bg"
                       }`}
                     />
                   </span>
                   {/* labels */}
                   <span
-                    className={`mt-3 text-sm font-semibold leading-tight transition-colors duration-300 ${
-                      isActive ? "text-fg" : "text-muted"
+                    className={`mt-3 text-sm leading-tight transition-colors duration-300 ${
+                      isActive ? "font-bold text-fg" : traveled ? "font-semibold text-fg/80" : "font-medium text-muted"
                     }`}
                   >
                     {e.role}
                   </span>
-                  <span className="mt-0.5 text-xs text-muted">{startLabel(e.period)}</span>
+                  <span
+                    className={`mt-0.5 text-xs transition-colors duration-300 ${
+                      isActive ? "font-semibold text-accent" : "text-muted"
+                    }`}
+                  >
+                    {startLabel(e.period)}
+                  </span>
                 </button>
               );
             })}
