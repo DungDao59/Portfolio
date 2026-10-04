@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { content } from "@/lib/content";
 import { Section } from "@/components/ui/Section";
@@ -42,36 +41,21 @@ export function Experience() {
 
                     {/* card */}
                     <article className="rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 backdrop-blur-sm transition-colors duration-300 hover:border-accent/40">
-                      <div className="flex items-start gap-3">
-                        {e.logo && (
-                          <span className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-white p-1.5">
-                            <Image
-                              src={e.logo}
-                              alt={e.org}
-                              width={28}
-                              height={28}
-                              className="h-full w-full object-contain"
-                            />
-                          </span>
-                        )}
-                        <div className="min-w-0 flex-1">
-                          <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-                            <h3 className="text-base font-semibold leading-tight md:text-lg">
-                              {e.role} <span className="text-muted">·</span>{" "}
-                              <span className="text-accent">{e.org}</span>
-                            </h3>
-                            <span className="flex shrink-0 items-center gap-2">
-                              {e.type && (
-                                <span className="rounded-full border border-white/15 px-2 py-0.5 text-[11px] font-medium text-muted">
-                                  {e.type}
-                                </span>
-                              )}
-                              <span className="rounded-full border border-accent/30 bg-accent/10 px-2.5 py-0.5 text-xs font-medium text-[#d8ccff]">
-                                {e.period}
-                              </span>
+                      <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+                        <h3 className="text-base font-semibold leading-tight md:text-lg">
+                          {e.role} <span className="text-muted">·</span>{" "}
+                          <span className="text-accent">{e.org}</span>
+                        </h3>
+                        <span className="flex shrink-0 items-center gap-2">
+                          {e.type && (
+                            <span className="rounded-full border border-white/15 px-2 py-0.5 text-[11px] font-medium text-muted">
+                              {e.type}
                             </span>
-                          </div>
-                        </div>
+                          )}
+                          <span className="rounded-full border border-accent/30 bg-accent/10 px-2.5 py-0.5 text-xs font-medium text-[#d8ccff]">
+                            {e.period}
+                          </span>
+                        </span>
                       </div>
 
                       {e.summary && !(e.bullets && e.bullets.length > 0) && (
