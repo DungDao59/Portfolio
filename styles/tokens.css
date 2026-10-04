@@ -1,0 +1,9 @@
+:root {
+  --bg: #0a0a0b;
+  --fg: #ededed;
+  --muted: #9a9aa2;
+  --accent: 124 92 255;
+  --accent-soft: rgba(124, 92, 255, 0.15);
+  --radius: 14px;
+  --maxw: 1200px;
+}

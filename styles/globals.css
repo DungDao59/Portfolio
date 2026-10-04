@@ -1,0 +1,100 @@
+@import "./tokens.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body { background: var(--bg); color: var(--fg); }
+body { -webkit-font-smoothing: antialiased; overflow-x: hidden; font-family: var(--font-body, ui-sans-serif, system-ui, sans-serif); }
+
+/* lock scrolling to one full-height section at a time */
+html {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-snap-type: none; scroll-behavior: auto; }
+}
+
+/* animated gradient shimmer name — each letter carries the gradient with a
+   staggered delay so the shimmer sweeps across the word as a wave */
+.name-letter {
+  display: inline-block;
+  background-image: linear-gradient(90deg, #ededed 0%, #7c5cff 50%, #ededed 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: name-shimmer 3s linear infinite;
+  transition: transform 0.2s ease;
+  will-change: background-position, transform;
+}
+.name-letter:hover {
+  transform: translateY(-0.1em) scale(1.08);
+}
+@keyframes name-shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .name-letter {
+    animation: none;
+  }
+}
+
+/* retro CRT hero text glow */
+.hero-crt {
+  text-shadow: 0 0 12px rgba(124, 92, 255, 0.5);
+}
+/* big glowing gradient name — the focal point of the screen */
+.hero-name {
+  background-image: linear-gradient(180deg, #ffffff 0%, #d8ccff 55%, #9d86ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 16px rgba(124, 92, 255, 0.65));
+  letter-spacing: 0.02em;
+}
+@keyframes crt-flicker {
+  0%, 97%, 100% { opacity: 1; }
+  98% { opacity: 0.82; }
+  99% { opacity: 0.94; }
+}
+.hero-crt {
+  animation: crt-flicker 6s infinite steps(1);
+}
+/* blinking availability status */
+@keyframes blink {
+  50% { opacity: 0.15; }
+}
+.blink {
+  animation: blink 1.1s steps(1, start) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-crt { animation: none; }
+  .blink { animation: none; }
+}
+
+/* shared tech grid — used on the hero display and the "inside the screen" world */
+.tech-grid {
+  background-image:
+    linear-gradient(rgba(124, 92, 255, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124, 92, 255, 0.09) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+/* grid decoration confined to the hero display, softly masked at the edges */
+.hero-grid {
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 55%, transparent 78%);
+  mask-image: radial-gradient(ellipse at center, #000 55%, transparent 78%);
+}
+
+/* subtle film grain overlay */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
