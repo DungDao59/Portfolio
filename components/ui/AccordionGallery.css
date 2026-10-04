@@ -149,6 +149,31 @@
   pointer-events: auto;
 }
 
+/* collapsed-panel title ("spine") — reads bottom-to-top on the left edge,
+   always visible on collapsed panels, fades out as a panel expands */
+.ag-panel__spine {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  z-index: 2;
+  margin: 0;
+  transform-origin: left bottom;
+  transform: rotate(-90deg);
+  color: var(--ag-text);
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
+  pointer-events: none;
+  opacity: 1;
+}
+
+.ag-panel--active .ag-panel__spine {
+  opacity: 0;
+}
+
 @media (max-width: 520px) {
   .accordion-gallery {
     flex-direction: column;
@@ -156,12 +181,25 @@
     height: auto !important;
   }
   .ag-panel {
-    min-height: 84px;
+    min-height: 160px;
     transform: none !important;
   }
+  .ag-panel--active {
+    min-height: 440px;
+  }
+  /* full-cover image on mobile — override gsap's parallax offset */
   .accordion-gallery .ag-panel__media {
     width: 100%;
-    height: var(--ag-media-size);
+    height: 100%;
+    transform: translate(-50%, -50%) !important;
+  }
+  /* horizontal title on mobile */
+  .ag-panel__spine {
+    writing-mode: horizontal-tb;
+    transform: none;
+    left: 18px;
+    bottom: 14px;
+    font-size: 17px;
   }
 }
 

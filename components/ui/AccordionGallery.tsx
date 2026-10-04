@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState, useCallback, type ReactNode } from "react";
+import Image from "next/image";
 import { gsap } from "gsap";
 
 import "./AccordionGallery.css";
@@ -64,6 +65,7 @@ export default function AccordionGallery<T extends AccordionItem>({
   const barRefs = useRef<(HTMLElement | null)[]>([]);
   const textRefs = useRef<(HTMLElement | null)[]>([]);
   const contentRefs = useRef<(HTMLElement | null)[]>([]);
+  const spineRefs = useRef<(HTMLElement | null)[]>([]);
   const tlRef = useRef<gsap.core.Timeline | null>(null);
   const firstRunRef = useRef(true);
   const mediaSizeRef = useRef(320);
@@ -97,6 +99,7 @@ export default function AccordionGallery<T extends AccordionItem>({
         const bar = barRefs.current[i];
         const text = textRefs.current[i];
         const contentEl = contentRefs.current[i];
+        const spine = spineRefs.current[i];
 
         const rot = isActive ? 0 : i < active ? tilt : -tilt;
         const rotProp = vertical ? { rotateX: -rot } : { rotateY: rot };
@@ -143,6 +146,11 @@ export default function AccordionGallery<T extends AccordionItem>({
           } else {
             tl.to(contentEl, { opacity: 0, x: -14, duration: dur * 0.6, ease }, 0);
           }
+        }
+
+        // collapsed-panel title: visible when inactive, fades out as it expands
+        if (spine) {
+          tl.to(spine, { opacity: isActive ? 0 : 1, duration: dur, ease }, 0);
         }
       });
 
@@ -265,11 +273,29 @@ export default function AccordionGallery<T extends AccordionItem>({
                   mediaRefs.current[i] = el;
                 }}
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={item.image} alt={item.alt || item.label || ""} draggable="false" />
+                <Image
+                  src={item.image}
+                  alt={item.alt || item.label || ""}
+                  fill
+                  sizes="(max-width: 520px) 100vw, 700px"
+                  className="object-cover"
+                  draggable={false}
+                />
               </span>
               <span className="ag-panel__overlay" aria-hidden="true" />
             </span>
+
+            {item.label && (
+              <span
+                className="ag-panel__spine"
+                aria-hidden="true"
+                ref={(el: HTMLElement | null) => {
+                  spineRefs.current[i] = el;
+                }}
+              >
+                {item.label}
+              </span>
+            )}
 
             {renderContent ? (
               <span
