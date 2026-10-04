@@ -123,4 +123,4 @@ The scene-cut fallback is shown automatically whenever `useFull3D` is `false` �
 
 ## Credits
 
-- 3D hero model: **"Simple computer"** by **Robert Schlyter** — licensed **CC BY 3.0**, via [poly.pizza](https://poly.pizza/m/doMMnviJrGi). File: `public/models/retro-computer.glb`.
+- 3D hero model: **"Simple computer"** by **Robert Schlyter** — licensed **CC BY 3.0**, via [poly.pizza](https://poly.pizza/m/doMMnviJrGi). File: `public/models/computer-screen.glb`.
