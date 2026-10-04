@@ -45,7 +45,7 @@ export function Nav() {
 
   return (
     <nav className="fixed left-1/2 top-4 z-40 -translate-x-1/2">
-      <div className="flex max-w-[95vw] items-center gap-1 overflow-x-auto rounded-full border border-white/10 bg-white/[0.06] px-2 py-1.5 shadow-[0_8px_30px_rgba(0,0,0,0.35)] backdrop-blur-md">
+      <div className="flex max-w-[95vw] items-center gap-0.5 overflow-x-auto rounded-full border border-white/10 bg-white/[0.06] px-1.5 py-1.5 shadow-[0_8px_30px_rgba(0,0,0,0.35)] backdrop-blur-md [scrollbar-width:none] sm:gap-1 sm:px-2 [&::-webkit-scrollbar]:hidden">
         {SECTIONS.map((id, i) => {
           const isActive = active === i;
           return (
@@ -53,7 +53,7 @@ export function Nav() {
               key={id}
               href={`#${id}`}
               onClick={(e) => handleNavClick(e, id)}
-              className="group relative shrink-0 rounded-full px-4 py-1.5 transition-colors hover:bg-white/10"
+              className="group relative shrink-0 rounded-full px-3 py-1.5 transition-colors hover:bg-white/10 sm:px-4"
             >
               {isActive && (
                 <motion.span
@@ -64,7 +64,7 @@ export function Nav() {
                 />
               )}
               <span
-                className={`relative z-10 text-xs uppercase tracking-widest transition-colors ${
+                className={`relative z-10 text-[11px] uppercase tracking-wide transition-colors sm:text-xs sm:tracking-widest ${
                   isActive ? "font-semibold text-white" : "text-muted group-hover:text-white"
                 }`}
               >

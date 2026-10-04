@@ -87,7 +87,7 @@ export const content = {
         "A food-donation platform connecting donors with recipients to cut food waste, built by a 4-person team with React, Node.js, and MongoDB.",
       tech: ["MongoDB", "Express", "React", "Node.js", "Stripe", "JWT"],
       live: "https://team3-v4u6.onrender.com/",
-      image: "/projects/aff.png",
+      image: "/projects/aff.webp",
     },
     {
       id: "nct-hub",
@@ -101,7 +101,7 @@ export const content = {
       tech: ["Next.js", "Supabase", "Docker"],
       live: "https://rmitnct.club/",
       github: "https://github.com/rmit-nct/hub",
-      image: "/projects/nct-hub.png",
+      image: "/projects/nct-hub.webp",
     },
     {
       id: "motul-epr",
@@ -113,7 +113,7 @@ export const content = {
       description:
         "A platform digitizing Motul's used-oil EPR workflow — tracking waste-oil collection from owners to recyclers for 100+ registered accounts.",
       tech: ["TypeScript", "Express", "Supabase", "Prisma", "Zod"],
-      image: "/projects/motul.png",
+      image: "/projects/motul.webp",
     },
     {
       id: "neo-weather",
@@ -126,7 +126,7 @@ export const content = {
         "A responsive weather app with real-time conditions, a five-day forecast, and interactive charts — built with the RMIT Neo Culture Tech team using React, TypeScript, and the OpenWeather API.",
       tech: ["React", "TypeScript", "Vite", "Chart.js", "TanStack Query"],
       github: "https://github.com/rmit-nct/neo-what-weather",
-      image: "/projects/neo-weather.png",
+      image: "/projects/neo-weather.webp",
     },
   ] satisfies Project[],
   techGroups: [
