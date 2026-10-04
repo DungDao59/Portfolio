@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { content, type ExperienceItem } from "@/lib/content";
 import { Section } from "@/components/ui/Section";
@@ -27,21 +28,36 @@ function startLabel(period: string): string {
 function DetailCard({ e }: { e: ExperienceItem }) {
   return (
     <div className="rounded-xl border border-white/10 bg-white/[0.04] px-5 py-4 backdrop-blur-sm">
-      <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-        <h3 className="text-base font-semibold leading-tight md:text-lg">
-          {e.role} <span className="text-muted">·</span>{" "}
-          <span className="text-accent">{e.org}</span>
-        </h3>
-        <span className="flex shrink-0 items-center gap-2">
-          {e.type && (
-            <span className="rounded-full border border-white/15 px-2 py-0.5 text-[11px] font-medium text-muted">
-              {e.type}
-            </span>
-          )}
-          <span className="rounded-full border border-accent/30 bg-accent/10 px-2.5 py-0.5 text-xs font-medium text-[#d8ccff]">
-            {e.period}
+      <div className="flex items-start gap-3">
+        {e.logo && (
+          <span className="relative mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center">
+            <Image
+              src={e.logo}
+              alt={e.org}
+              width={36}
+              height={36}
+              className="h-full w-full object-contain"
+            />
           </span>
-        </span>
+        )}
+        <div className="min-w-0 flex-1">
+          <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+            <h3 className="text-base font-semibold leading-tight md:text-lg">
+              {e.role} <span className="text-muted">·</span>{" "}
+              <span className="text-accent">{e.org}</span>
+            </h3>
+            <span className="flex shrink-0 items-center gap-2">
+              {e.type && (
+                <span className="rounded-full border border-white/15 px-2 py-0.5 text-[11px] font-medium text-muted">
+                  {e.type}
+                </span>
+              )}
+              <span className="rounded-full border border-accent/30 bg-accent/10 px-2.5 py-0.5 text-xs font-medium text-[#d8ccff]">
+                {e.period}
+              </span>
+            </span>
+          </div>
+        </div>
       </div>
 
       {e.summary && !(e.bullets && e.bullets.length > 0) && (
