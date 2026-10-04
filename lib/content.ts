@@ -17,6 +17,9 @@ export type EducationItem = {
   id: string; school: string; credential: string; period: string;
 };
 export type SocialLink = { label: string; href: string };
+export type TechGroupId = "lang" | "framework" | "tool";
+export type TechGroup = { id: TechGroupId; label: string; hue: string };
+export type Tech = { name: string; icon: string; group: TechGroupId; x: number; y: number };
 
 export const SECTIONS = [
   "hero", "about", "projects", "tech", "experience", "education", "contact",
@@ -83,7 +86,7 @@ export const content = {
       id: "nct-hub",
       title: "NCT Hub",
       name: "NCT Hub",
-      role: "Head of Technology",
+      role: "Full-Stack Developer",
       highlight:
         "Coordinated 10+ projects across 11 teams in 2 months, shipping 100% on time.",
       description:
@@ -109,7 +112,7 @@ export const content = {
       id: "neo-weather",
       title: "Neo What Weather",
       name: "Neo What Weather",
-      role: "Contributor",
+      role: "Frontend Developer ",
       highlight:
         "Built the 5-day forecast card and resolved the final merge conflicts.",
       description:
@@ -119,13 +122,41 @@ export const content = {
       image: "/projects/neo-weather.png",
     },
   ] satisfies Project[],
+  techGroups: [
+    { id: "lang", label: "Languages & Databases", hue: "#7c5cff" },
+    { id: "framework", label: "Frameworks & Libraries", hue: "#38bdf8" },
+    { id: "tool", label: "Tools & Services", hue: "#f472b6" },
+  ] satisfies TechGroup[],
+  // Ordered within each group so consecutive same-group nodes are neighbours —
+  // the constellation lines simply connect each node to the next in its group.
   techStack: [
-    "TypeScript", "JavaScript", "Python", "Java", "C++",
-    "PostgreSQL", "MongoDB",
-    "Node.js", "Express.js", "React.js", "Next.js", "Prisma", "Zod",
-    "Git", "GitHub", "Docker", "Postman", "Stripe", "Cloudinary",
-    "Resend", "Render", "Vercel", "Supabase",
-  ],
+    // Languages & Databases
+    { name: "JavaScript", icon: "/tech/javascript.svg", group: "lang", x: 24, y: 13 },
+    { name: "TypeScript", icon: "/tech/typescript.svg", group: "lang", x: 11, y: 22 },
+    { name: "C++", icon: "/tech/cplusplus.svg", group: "lang", x: 35, y: 25 },
+    { name: "Java", icon: "/tech/java.svg", group: "lang", x: 21, y: 40 },
+    { name: "Python", icon: "/tech/python.svg", group: "lang", x: 7, y: 45 },
+    { name: "MongoDB", icon: "/tech/mongodb.svg", group: "lang", x: 31, y: 58 },
+    { name: "PostgreSQL", icon: "/tech/postgresql.svg", group: "lang", x: 14, y: 65 },
+    // Frameworks & Libraries
+    { name: "Express.js", icon: "/tech/express.svg", group: "framework", x: 79, y: 14 },
+    { name: "React.js", icon: "/tech/react.svg", group: "framework", x: 55, y: 16 },
+    { name: "Next.js", icon: "/tech/nextjs.svg", group: "framework", x: 68, y: 27 },
+    { name: "Prisma", icon: "/tech/prisma.svg", group: "framework", x: 83, y: 35 },
+    { name: "Node.js", icon: "/tech/nodejs.svg", group: "framework", x: 62, y: 45 },
+    { name: "Zod", icon: "/tech/zod.svg", group: "framework", x: 73, y: 56 },
+    // Tools & Services
+    { name: "Cloudinary", icon: "/tech/cloudinary.svg", group: "tool", x: 89, y: 66 },
+    { name: "Stripe", icon: "/tech/stripe.svg", group: "tool", x: 77, y: 78 },
+    { name: "Resend", icon: "/tech/resend.svg", group: "tool", x: 91, y: 87 },
+    { name: "Render", icon: "/tech/render.svg", group: "tool", x: 65, y: 90 },
+    { name: "Vercel", icon: "/tech/vercel.svg", group: "tool", x: 59, y: 73 },
+    { name: "Postman", icon: "/tech/postman.svg", group: "tool", x: 46, y: 71 },
+    { name: "Supabase", icon: "/tech/supabase.svg", group: "tool", x: 49, y: 88 },
+    { name: "Docker", icon: "/tech/docker.svg", group: "tool", x: 34, y: 86 },
+    { name: "GitHub", icon: "/tech/github.svg", group: "tool", x: 22, y: 77 },
+    { name: "Git", icon: "/tech/git.svg", group: "tool", x: 9, y: 85 },
+  ] satisfies Tech[],
   experience: [
     {
       id: "exp-nct",

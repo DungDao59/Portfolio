@@ -1,22 +1,28 @@
 import { content } from "@/lib/content";
 import { Section } from "@/components/ui/Section";
-import { Reveal } from "@/components/ui/Reveal";
 import { FlapHeading } from "@/components/ui/FlapHeading";
+import { TechConstellation } from "@/components/ui/TechConstellation";
 
 export function TechStack() {
   return (
     <Section id="tech">
-      <div className="w-full text-center">
-        <FlapHeading text="TECH STACK" className="mb-10 flex justify-center" />
-        <div className="flex flex-wrap justify-center gap-3">
-          {content.techStack.map((t, i) => (
-            <Reveal key={t} delay={i * 0.05}>
-              <span className="rounded-full border border-white/10 bg-white/[0.03] px-5 py-2 text-sm text-fg">
-                {t}
-              </span>
-            </Reveal>
+      <div className="w-full">
+        <FlapHeading text="TECH STACK" className="mb-5 flex justify-center" />
+
+        {/* legend: colour → category */}
+        <div className="mb-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-muted">
+          {content.techGroups.map((g) => (
+            <span key={g.id} className="inline-flex items-center gap-2">
+              <span
+                className="inline-block h-2.5 w-2.5 rounded-full"
+                style={{ backgroundColor: g.hue, boxShadow: `0 0 10px ${g.hue}` }}
+              />
+              {g.label}
+            </span>
           ))}
         </div>
+
+        <TechConstellation />
       </div>
     </Section>
   );
