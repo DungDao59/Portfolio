@@ -1,6 +1,6 @@
 # Developer Portfolio
 
-An immersive Next.js developer portfolio featuring a continuous 3D camera journey through a "Digital Cosmos" world — seven content zones (Hero, About, Projects, Skills, Experience, Education, Contact) rendered with React Three Fiber. On mobile, low-power devices, and when `prefers-reduced-motion` is set, the 3D scene is replaced with a scene-cut (section-snap) fallback; this is intentional.
+An immersive Next.js developer portfolio: a 3D retro-computer hero in a "Digital Cosmos", a scroll "dive" into the screen, then six themed, snap-scrolling content sections (Hero, About, Projects, Tech Stack, Experience, Contact) — built with React Three Fiber. On mobile, low-power devices, and when `prefers-reduced-motion` is set, the 3D scene is replaced with a scene-cut (section-snap) fallback; this is intentional.
 
 ---
 
@@ -52,31 +52,17 @@ npm start
 
 ## Editing your content
 
-**All personal content lives in one file: `lib/content.ts`.**
+**All personal content lives in one file: `lib/content.ts`.** Edit the values there and save — hot-reload picks up changes immediately in dev.
 
-Every value you need to replace is prefixed with `PLACEHOLDER:`. Find them all at once:
-
-```bash
-grep -rn "PLACEHOLDER" lib/ app/
-```
-
-This currently returns **18 occurrences**, all inside `lib/content.ts`:
-
-| Field | What to replace |
+| Field | What it holds |
 |---|---|
-| `name` | Your full name |
-| `title` | Your job title |
-| `tagline` | One-line personal tagline |
-| `bio` | 2–3 sentence about section bio |
-| `projects[*].title` | Project names (×3) |
-| `projects[*].description` | Project descriptions (×3) |
-| `experience[*].role` | Job titles (×2) |
-| `experience[*].org` | Company names (×2) |
-| `experience[*].summary` | Role summaries (×2) |
-| `education[0].school` | University name |
-| `education[0].credential` | Degree/credential |
-
-Edit the file and save — hot-reload picks up the changes immediately in dev.
+| `name`, `heroName`, `title` | Identity shown in the hero and nav |
+| `tagline`, `headline` | One-line pitch and hero subhead |
+| `about` | About-section bio |
+| `projects[*]` | Project cards (title, role, description, tech, links, image) |
+| `techStack` / `techGroups` | Tech-constellation nodes and their groups |
+| `experience[*]` | Experience-timeline entries (role, org, period, bullets, tags, logo) |
+| `email`, `socials` | Contact details |
 
 ---
 
@@ -85,23 +71,31 @@ Edit the file and save — hot-reload picks up the changes immediately in dev.
 Open `styles/tokens.css` and update the CSS custom properties:
 
 ```css
---accent: /* your hue, e.g. oklch(0.7 0.2 260) */;
---accent-soft: /* a softer/lighter variant */;
+--accent: 124 92 255;                   /* space-separated RGB channels */
+--accent-soft: rgba(124, 92, 255, 0.15);
 ```
 
-Both the 3D world and all UI overlays read from these tokens, so a single edit repaints the entire site.
+`--accent` is stored as raw RGB channels so Tailwind can apply opacity (e.g. `text-accent/60`). Both the 3D world and all UI overlays read from these tokens, so a single edit repaints the entire site.
 
 ---
 
 ## Deploy to Vercel
 
-No environment variables are required. The 3D scene runs entirely client-side, so deployment is standard static Next.js.
+The site deploys as a standard Next.js app. The only setup is the contact-form email service ([Resend](https://resend.com)); everything else works out of the box.
 
 1. Push your repository to GitHub.
 2. Go to [vercel.com/new](https://vercel.com/new) and import the repository.
-3. Vercel auto-detects Next.js — click **Deploy**.
+3. Under **Environment Variables**, add the values below (see `.env.example`), then click **Deploy**.
 
-> **Note:** Because `npm install` requires `--legacy-peer-deps`, add a project-level `.npmrc` (already present in this repo) or set the Vercel install command to `npm install --legacy-peer-deps` under **Project Settings → Build & Development Settings → Install Command**.
+| Variable | Required | Purpose |
+|---|---|---|
+| `RESEND_API_KEY` | **Yes** (for the form) | Resend API key used to send contact-form email. |
+| `CONTACT_TO` | No | Where messages are delivered (defaults to the owner's email). |
+| `CONTACT_FROM` | No | Verified sender. Use `onboarding@resend.dev` until your domain is verified in Resend, then `Portfolio <contact@yourdomain.com>`. |
+
+Without `RESEND_API_KEY` the whole site still works — the form just returns a friendly "not configured yet" message.
+
+> **Note:** `npm install` requires `--legacy-peer-deps` (Vitest ↔ `@testing-library` peer conflict). A project-level `.npmrc` with `legacy-peer-deps=true` is already present, so Vercel installs cleanly with no extra config.
 
 That's it — the site will be live in under a minute.
 
@@ -113,14 +107,15 @@ That's it — the site will be live in under a minute.
 |---|---|
 | All content | `lib/content.ts` |
 | Design tokens / accent color | `styles/tokens.css` |
-| 3D world + camera path | `components/scene/` |
-| Capability detection + fallback | `lib/capability.ts`, `components/SceneCutFallback` |
-| Section overlays (7 zones) | `components/sections/` |
-| Preloader + curtain entrance | `components/Preloader` |
-| Navigation + scroll progress | `components/Nav` |
+| 3D hero scene + camera | `components/three/` |
+| Capability detection + fallback | `lib/capability.ts`, `components/fallback/SceneCut.tsx` |
+| Content sections (6) | `components/sections/` |
+| World-building preloader (intro) | `components/intro/Preloader.tsx` |
+| Navigation + scroll progress | `components/ui/Nav.tsx`, `components/ui/ScrollProgress.tsx` |
+| Contact form API (Resend) | `app/api/contact/route.ts` |
 
 The scene-cut fallback is shown automatically whenever `useFull3D` is `false` — reduced-motion users, mobile/low-power devices, and browsers without WebGL all get a smooth, accessible experience without the 3D overhead.
 
 ## Credits
 
-- 3D hero model: **"Simple computer"** by **Robert Schlyter** — licensed **CC BY 3.0**, via [poly.pizza](https://poly.pizza/m/doMMnviJrGi). File: `public/models/retro-computer.glb`.
+- 3D hero model: **"Simple computer"** by **Robert Schlyter** — licensed **CC BY 3.0**, via [poly.pizza](https://poly.pizza/m/doMMnviJrGi). File: `public/models/computer-screen.glb`.
