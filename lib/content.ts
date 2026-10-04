@@ -11,7 +11,17 @@ export type Project = {
   image?: string;
 };
 export type ExperienceItem = {
-  id: string; role: string; org: string; period: string; summary: string;
+  id: string;
+  role: string;
+  org: string;
+  period: string;
+  summary: string;
+  location?: string;
+  type?: string;
+  logo?: string;
+  bullets?: string[];
+  tags?: string[];
+  link?: string;
 };
 export type EducationItem = {
   id: string; school: string; credential: string; period: string;
@@ -159,20 +169,65 @@ export const content = {
   ] satisfies Tech[],
   experience: [
     {
-      id: "exp-nct",
+      id: "exp-nct-head",
       role: "Head of Technology",
       org: "RMIT Neo Culture Tech Club",
       period: "Jun 2026 — Present",
+      location: "Ho Chi Minh City",
+      type: "Leadership",
+      logo: "/experience/nct.png",
       summary:
-        "Lead the club's technology department — managing projects and members, identifying real problems within the club, and automating them by building tools integrated into a larger internal ecosystem.",
+        "Lead the club's technology department — spotting real problems within the club and automating them into one larger internal ecosystem.",
+      bullets: [
+        "Coordinated 10+ projects across 11 teams in 2 months, shipping 100% on time",
+        "Build & maintain NCT Hub (50+ members) and organized a 70+ participant tech contest",
+      ],
+      tags: ["Next.js", "Leadership", "Project Management"],
     },
     {
       id: "exp-neoleague",
       role: "Organizer",
       org: "RMIT Neo League — Season 2",
       period: "Mar 2026 — May 2026",
-      summary:
-        "Helped organize the RMIT Neo League competition — designing problems for contestants to solve and preparing the supporting documentation.",
+      location: "Ho Chi Minh City",
+      type: "Competition",
+      logo: "/experience/rmit.png",
+      summary: "Helped organize the RMIT Neo League competition.",
+      bullets: [
+        "Designed contest problems for participants to solve",
+        "Prepared the supporting documentation",
+      ],
+      tags: ["Problem Design", "Operations"],
+    },
+    {
+      id: "exp-nct-member",
+      role: "Member",
+      org: "RMIT Neo Culture Tech Club",
+      period: "May 2025 — Jun 2026",
+      location: "Ho Chi Minh City",
+      type: "Club",
+      logo: "/experience/nct.png",
+      summary: "Contributed to numerous club projects before stepping up to lead.",
+      bullets: [
+        "Built the 5-day forecast card for Neo What Weather",
+        "Added a QR generator tool to NCT Hub, and helped maintain & improve it",
+      ],
+      tags: ["React", "TypeScript", "Next.js"],
+    },
+    {
+      id: "exp-ai-prompting",
+      role: "Participant",
+      org: "RMIT AI Prompting Competition",
+      period: "Jul 2025",
+      location: "Ho Chi Minh City",
+      type: "Competition",
+      logo: "/experience/rmit.png",
+      summary: "Competed in RMIT's AI prompting competition.",
+      bullets: [
+        "Trained an AI model and built a game app",
+        "Probed AI systems for security weaknesses",
+      ],
+      tags: ["AI", "Prompt Engineering", "Security"],
     },
   ] satisfies ExperienceItem[],
   education: [
