@@ -5,7 +5,6 @@ import { About } from "@/components/sections/About";
 import { Projects } from "@/components/sections/Projects";
 import { TechStack } from "@/components/sections/TechStack";
 import { Experience } from "@/components/sections/Experience";
-import { Education } from "@/components/sections/Education";
 import { Contact } from "@/components/sections/Contact";
 
 export function SceneCut() {
@@ -16,7 +15,7 @@ export function SceneCut() {
     >
       <Nav />
       <main className="relative z-10">
-        <Hero immediate /><About /><Projects /><TechStack /><Experience /><Education /><Contact />
+        <Hero immediate /><About /><Projects /><TechStack /><Experience /><Contact />
       </main>
     </div>
   );

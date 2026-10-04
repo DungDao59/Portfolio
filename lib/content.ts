@@ -23,16 +23,13 @@ export type ExperienceItem = {
   tags?: string[];
   link?: string;
 };
-export type EducationItem = {
-  id: string; school: string; credential: string; period: string;
-};
 export type SocialLink = { label: string; href: string };
 export type TechGroupId = "lang" | "framework" | "tool";
 export type TechGroup = { id: TechGroupId; label: string; hue: string };
 export type Tech = { name: string; icon: string; group: TechGroupId; x: number; y: number };
 
 export const SECTIONS = [
-  "hero", "about", "projects", "tech", "experience", "education", "contact",
+  "hero", "about", "projects", "tech", "experience", "contact",
 ] as const;
 export type SectionId = (typeof SECTIONS)[number];
 
@@ -235,14 +232,6 @@ export const content = {
       tags: ["AI", "Prompt Engineering", "Security"],
     },
   ] satisfies ExperienceItem[],
-  education: [
-    {
-      id: "edu-rmit",
-      school: "RMIT University, Ho Chi Minh City",
-      credential: "Bachelor of Engineering (Software Engineering)",
-      period: "Oct 2024 — Oct 2028",
-    },
-  ] satisfies EducationItem[],
   email: "dungdao.work@gmail.com",
   socials: [
     { label: "GitHub", href: "https://github.com/DungDao59" },

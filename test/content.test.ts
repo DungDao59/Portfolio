@@ -2,9 +2,9 @@ import { describe, it, expect } from "vitest";
 import { content, SECTIONS } from "@/lib/content";
 
 describe("content", () => {
-  it("has the seven ordered sections", () => {
+  it("has the six ordered sections", () => {
     expect(SECTIONS).toEqual([
-      "hero", "about", "projects", "tech", "experience", "education", "contact",
+      "hero", "about", "projects", "tech", "experience", "contact",
     ]);
   });
   it("provides identity fields", () => {

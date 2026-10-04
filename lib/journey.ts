@@ -12,7 +12,6 @@ const RAW: Record<SectionId, { cameraPos: Vec3; lookAt: Vec3 }> = {
   projects:   { cameraPos: [-4, 0, -22],  lookAt: [-2, 0, -28] },
   tech:       { cameraPos: [2, 2, -40],   lookAt: [0, 1, -46] },
   experience: { cameraPos: [-2, -1, -58], lookAt: [0, 0, -66] },
-  education:  { cameraPos: [3, 1, -76],   lookAt: [1, 0, -82] },
   contact:    { cameraPos: [0, 0, -92],   lookAt: [0, 0, -100] },
 };
 

@@ -50,7 +50,7 @@ export function About() {
                     sizes="420px"
                     quality={90}
                     priority
-                    className="object-cover"
+                    className="scale-85 object-cover"
                   />
                 </div>
               )}

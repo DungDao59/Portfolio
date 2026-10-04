@@ -16,7 +16,6 @@ import { About } from "@/components/sections/About";
 import { Projects } from "@/components/sections/Projects";
 import { TechStack } from "@/components/sections/TechStack";
 import { Experience } from "@/components/sections/Experience";
-import { Education } from "@/components/sections/Education";
 import { Contact } from "@/components/sections/Contact";
 
 export default function Page() {
@@ -32,7 +31,7 @@ export default function Page() {
       <ScrollProgress />
       <Nav />
       <main className="relative z-10">
-        <Hero /><About /><Projects /><TechStack /><Experience /><Education /><Contact />
+        <Hero /><About /><Projects /><TechStack /><Experience /><Contact />
       </main>
     </>
   );

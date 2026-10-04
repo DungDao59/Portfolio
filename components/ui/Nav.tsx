@@ -9,7 +9,6 @@ const LABEL_MAP: Record<string, string> = {
   projects: "Projects",
   tech: "Tech",
   experience: "Experience",
-  education: "Education",
   contact: "Contact",
 };
 
