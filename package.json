@@ -8,6 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "gen:icons": "node scripts/gen-icons.mjs",
     "test": "vitest run --passWithNoTests",
     "test:watch": "vitest"
   },
